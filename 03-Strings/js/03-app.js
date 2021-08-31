@@ -11,5 +11,5 @@ console.log("El producto " + producto + " tiene un precio de " + precio);
 console.log("El producto" , producto , "tiene un precio de" , precio);
 
 
-// Template string, es la mas recomendable, se debe usar Backtick (Alt + 92)
+// Template string, es la mas recomendable, se debe usar Backtick (Alt + 96)
 console.log(`El producto ${producto} tiene un precio de $${precio}`);
