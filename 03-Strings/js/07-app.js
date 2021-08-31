@@ -1,6 +1,10 @@
 // String Methods - Convertir a Mayusculas o Minusculas
 const producto = 'Monitor de 20 Pulgadas';
+
+// Convierte a mayusculas
 console.log(producto.toUpperCase());
+
+// Convierte a minusculas
 console.log(producto.toLowerCase());
 
 
