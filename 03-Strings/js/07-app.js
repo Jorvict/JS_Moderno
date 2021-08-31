@@ -7,7 +7,9 @@ console.log(producto.toUpperCase());
 // Convierte a minusculas
 console.log(producto.toLowerCase());
 
-
+// En el caso de email, se recomienda transformarlo a minusculas antes
+// de enviarlos a la BD ya que los correos son únicos y no afecta si
+// están en mayuscula o minuscula
 const email = 'CORREO@CORREO.COM';
 console.log(email.toLowerCase());
 
