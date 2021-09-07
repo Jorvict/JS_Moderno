@@ -24,3 +24,27 @@ const {nombre: names, precio: price} = producto;
 console.log(`${names} Precio: $ ${price}`);
 console.log(names);
 console.log(price);
+
+// Object destructuring 1
+const localizacion = {
+    continente : 'América',
+    pais : 'Perú',
+    ciudad : 'Lima'
+}
+
+const {continente, pais, ciudad} = localizacion;
+console.log(continente);
+console.log(pais);
+console.log(ciudad);
+
+// Object destructuring 2
+const mobiliaria = {
+    inmueble : 'Casa',
+    habitaciones : 3,
+    baños: 2
+}
+const {inmueble, habitaciones, baños} = mobiliaria;
+
+console.log(inmueble);
+console.log(habitaciones);
+console.log(2);
