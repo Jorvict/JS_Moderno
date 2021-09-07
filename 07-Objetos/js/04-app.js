@@ -16,3 +16,11 @@ console.log(nombre);
 console.log(precio);
 console.log(disponible);
 console.log(noExiste); // Mostrará undefined ya que se crea la variable pero el valor que se debería asignar no existe
+
+
+// Cambiar nombre a llave usando alias y concatenar con template literals
+const {nombre: names, precio: price} = producto;
+ 
+console.log(`${names} Precio: $ ${price}`);
+console.log(names);
+console.log(price);
