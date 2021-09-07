@@ -11,6 +11,6 @@ console.log(producto);
 console.log(producto.nombre);
 
 // Existe una segunda forma que no es común pero en ciertos casos es útil
-// En vez de utilizar el punto, se colocan corchetes y dentro, como string
-// colocamos el nombre de la llave a la que deseamos acceder
+/* En vez de utilizar el punto, se colocan corchetes y dentro, como string
+    colocamos el nombre de la llave a la que deseamos acceder */
 console.log(producto['nombre']);
