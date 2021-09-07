@@ -1,4 +1,5 @@
 // Crear Objetos en JavaScript
+
 /* En lugar de crear diferentes variables, en un objeto puedes agrupar
 todo en una sola variable*/
 const nombre = 'Monitor 20 pulgadas';
@@ -18,7 +19,7 @@ console.log(producto);
 
 /* Resumen: En lugar de crear 3 variables distintas, podemos crear un
 objeto que almacene esos mismos valores, la sintaxis del objeto es que
-al ser declara se colocan llaves {} y sus Propiedades o Llaves del objeto
+al ser declarada, se colocan llaves {} y sus Propiedades o Llaves del objeto
 se definen con "nombre de la llave" + ":" + "El valor que se asignará
 a la llave", recordar también colocar una coma "," luego de haber definido
 una llave, esto para poder definir llaves adicionales, la última llave del
