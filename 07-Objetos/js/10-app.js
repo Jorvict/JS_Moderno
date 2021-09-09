@@ -11,15 +11,22 @@ const medidas = {
     medida : '1m'
 }
 
+const tienda ={
+    sede : 'salaverry',
+    distrito : ' jesus maria'
+}
+
 console.log(producto);
 console.log(medidas);
 
 // Utilizando el método assign
-const resultado = Object.assign(producto, medidas);
-console.log(resultado);
+// Modifica el objeto original debido a que la copia y el original (1er arg)
+// apuntan al mismo espacio de memoria
+// const resultado = Object.assign(producto, medidas, tienda); 
+// console.log(resultado);
 
 // Spread Operator o Rest Operator
-const resultado2 = {...producto, ...medidas}
+const resultado2 = {...producto, ...medidas, ...tienda}
 console.log(resultado2);
 
 /*Nota: Los 3 puntos del Rest significan que tomen una copia, es decir,
