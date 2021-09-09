@@ -30,4 +30,4 @@ valores que se asignaran a cada atributo no se cruzaran con los valores
 valores de los atributos de otros objetos */
 
 /* Nota: Aunque el Object Constructor es más dinamico, se suele utilizar
-mas el Object Literal*/
+mas el Object Literal */
