@@ -48,3 +48,22 @@ resultado = [...resultado, producto2]; // Copiamos resultado y agregamos product
 resultado = [producto3, ...resultado];
 
 console.table(resultado);
+
+// Método para agregar varios datos simultaneamente
+// resultado = [...carrito, producto, producto3, producto2];
+
+/* Otro ejemplo de Spread Operator */
+const calendario = [];
+
+const primerCuatrimestre = ['Enero', 'Febrero', 'Marzo', 'Abril'],
+      segundoCuatrimestre = ['Mayo', 'Junio', 'Julio', 'Agosto'],
+      tercerCuatrimestre = ['Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+ 
+const calendarioGregoriano = [...calendario,
+                                primerCuatrimestre, 
+                                segundoCuatrimestre, 
+                                tercerCuatrimestre
+                            ]; 
+
+console.table(calendario); // No tiene nada ya que no se esta modificando el original
+console.table(calendarioGregoriano);
