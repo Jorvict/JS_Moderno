@@ -11,7 +11,8 @@ multiples veces, existen 2 formas de crear funciones en JS, una es
 Declaración de Función (Function Declaration) y la otra es Expresión de
 Función (Function expression) */
 
-// Declaración de función ( Function Declaration)
+// ============= Declaración de función ( Function Declaration)
+// Inicia con function
 function sumar() { // Lo que va dentro de los () son parametros de la función
     console.log(2 + 2);
 }
@@ -24,8 +25,8 @@ sumar();
 poder reutilizar el código */
 
 
-// Expresión de función (Function Expression)
-// Es como si una variable fuera igual a nuestra función
+// ============= Expresión de función (Function Expression)
+// Es como si una variable fuera igual a la función
 const sumar2 = function(){
     console.log(3 + 3);
 }
