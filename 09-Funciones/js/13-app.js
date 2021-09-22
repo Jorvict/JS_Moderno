@@ -7,7 +7,7 @@ const reproductor = {
     borrar: id => console.log(`Borrando canción con el id ${id}`) ,
     crearPlaylist: nombre => {
         console.log(`Creando playlist "${nombre}".`);
-        reproductor.reproducirPlaylist(nombre);
+        reproductor.reproducirPlaylist(nombre); // No se puede usar this ya que el contexto solo aplicaría dentro del rango de "crearPlaylist"
     },
     reproducirPlaylist: nombre => console.log(`Reproduciendo playlist "${nombre}".`),
 
