@@ -1,6 +1,6 @@
 // El Operador && para revisar que se cumplan 2 o más condiciones
 
-/* El operador && revisa que se cumplan 2 o más condiciones que se
+/* El operador && (AND) revisa que se cumplan 2 o más condiciones que se
 encuentre dentro del IF, por ejemplo al comprar en Amazon, debes
 tener una cuenta Y tener saldo disponible Y el producto debe estar 
 disponible. Sí alguna de todas las condiciones no se cumple, 
@@ -24,5 +24,5 @@ if(usuario && puedePagar){
 } else if(!puedePagar){
 
     console.log('Fondos insuficientes');
-    
+
 }
