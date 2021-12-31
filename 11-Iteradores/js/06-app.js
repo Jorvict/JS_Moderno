@@ -27,10 +27,15 @@ const carrito = [
     {nombre: 'Celular', precio: 700}, //Posición 5
 ]
 
-carrito.forEach( producto => console.log(producto.nombre));
+carrito.forEach( producto => producto.nombre);
 
 
 // .map
 /* Es bastante similar con .map la diferencia es que
 map crea un array nuevo y forEach no*/
-carrito.map( producto => console.log(producto.nombre));
+const nuevoArreglo = carrito.map( producto => producto.nombre);
+console.log(nuevoArreglo);
+
+// Nota: Al usar map, cada vez que realiza una iteración,
+// debe retornar un valor que es el calor que se almacenara
+// en el array.
