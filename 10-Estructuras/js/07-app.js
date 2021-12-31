@@ -16,7 +16,7 @@ if (efectivo > totalPagar || credito > totalPagar || disponible > totalPagar){
 }
 
 /* Este código es común al validar un formulario, por ejemplo con un
-código similar podríamos validadr que todos los camps estén llenados,
+código similar podríamos validar que todos los campos estén llenados,
 en caso se detecte que ALGUNO de TODOS los campos esté vació, se puede
 mostrar un mensaje en la pantalla donde se indique que todos los campos
 deben estar llenos y no debe haber campos vacios */

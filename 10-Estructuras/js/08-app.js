@@ -16,7 +16,7 @@ function revisarPuntaje() {
         return deja de ejecutarse la función y el resto del código deja de
         ejecutarse por lo cual la otra condicional ya no se ejecuta.
         Cabe recalcar que esto solo funciona cuando las condiciones
-        se están ejecutando dentro de una función. En otroas palabras,
+        se están ejecutando dentro de una función. En otras palabras,
         para la ejecución del código en esa linea. */
     }
     

@@ -47,4 +47,4 @@ const {inmueble, habitaciones, baños} = mobiliaria;
 
 console.log(inmueble);
 console.log(habitaciones);
-console.log(2);
+console.log(baños);

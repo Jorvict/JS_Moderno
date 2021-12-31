@@ -29,3 +29,7 @@ de punto al imprimir el dato del objeto */
 carrito.forEach( function (p) {
     console.log(`Producto: ${p.nombre}. Precio: ${p.precio}`);
 })
+
+carrito.forEach(function (product) {
+    console.log(`${product.nombre} cuesta: ${product.precio}`);
+})

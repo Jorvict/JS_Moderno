@@ -25,8 +25,9 @@ la función 2 muestra error, esto es debido a que JS se ejecuta en
 
     Sin embargo la función sumar2 muestra error debido a que al
     momento de la segunda vuelta, se ha definido la función y la
-    variable pero no se ha asignado la funcion a la variable sumar2, es
-    decir, es como si el flujo de depuración fuera de la siguiente forma:
+    variable pero no se ha asignado la funcion a la variable sumar2 para el momento
+    en el que se invocado, es decir, es como si el flujo de depuración fuera de 
+    la siguiente forma:
 
     const sumar2;
 
@@ -37,7 +38,7 @@ la función 2 muestra error, esto es debido a que JS se ejecuta en
 
     OJO: Esto ocurre porque se llama a la funcion antes de ser definida
     en Function Expression, si la función se llama luego de ser
-    definida, entonces se ejecuará con normalidad.
+    definida, entonces se ejecutará con normalidad.
 
 En el caso de Function Declaration, la función puede ser llamada antes
 de definirla sin ninún inconveniente.

@@ -9,8 +9,23 @@ const carrito = [
     {nombre: 'Celular', precio: 700}, //Posición 5
 ]
 
-const nuevoArreglo = carrito.map( producto => `Producto: ${producto.nombre}. Precio: ${producto.precio}`); 
-
 carrito.forEach( producto => console.log(`Producto: ${producto.nombre}. Precio: ${producto.precio}`));
 
-console.log(nuevoArreglo);
+// const nuevoArreglo = carrito.map( producto => `Producto: ${producto.nombre}. Precio: ${producto.precio}`); 
+
+console.log(`Test Filtrado precio mayor a 300:`);
+
+const nuevoArreglo = carrito.map( producto => { 
+        if(producto.precio > 300) {
+            return `Producto: ${producto.nombre}. Precio: ${producto.precio}`;
+        }
+    }
+);
+
+for(let i = 0; i < nuevoArreglo.length; i++){
+    if(nuevoArreglo[i] !== undefined){
+        console.log(nuevoArreglo[i]);
+    }
+}
+
+// console.log(nuevoArreglo);

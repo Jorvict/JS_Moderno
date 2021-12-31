@@ -13,16 +13,30 @@ const nuevoArreglo = carrito.forEach( function (producto) {
     return `Producto: ${producto.nombre}. Precio: ${producto.precio}`;
 })
 
+carrito.forEach( function (producto) {
+    console.log(`Producto: ${producto.nombre}. Precio: ${producto.precio}`);
+})
+
 // La sintaxis de map es igual a la de forEach
 /* La diferencia es que .map crea un array nuevo y forEach no*/
 /* Un caso en el que se puede utilizar esto, es por ejemplo sí deseas
 crear un arreglo nuevo con los productos que cuesten más de 300 */
 
+console.log(`Filtrar productos con precio mayor a 300`)
 const nuevoArreglo2 = carrito.map( function (producto) {
     // Siempre necesita un callback de retorno ya que esto es lo que
     // almacenará en el nuevo array
-    return `Producto: ${producto.nombre}. Precio: ${producto.precio}`;
+    if(producto.precio > 300)
+    {
+        return `Producto: ${producto.nombre}. Precio: ${producto.precio}`
+    }
 })
 
-console.log(nuevoArreglo); // El array del forEach no tiene nada
-console.log(nuevoArreglo2);
+// console.log(nuevoArreglo); // El array del forEach no tiene nada
+// console.log(nuevoArreglo2);
+
+for(let i = 0; i < nuevoArreglo2.length; i++){
+    if (nuevoArreglo2[i] != undefined){
+        console.log(nuevoArreglo2[i])
+    }
+}
