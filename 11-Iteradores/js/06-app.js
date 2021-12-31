@@ -39,3 +39,30 @@ console.log(nuevoArreglo);
 // Nota: Al usar map, cada vez que realiza una iteración,
 // debe retornar un valor que es el calor que se almacenara
 // en el array.
+
+// fizz buzz con forEach
+function checkArray () {
+    const arrayfizz = [];
+    let j = 1;
+
+    while(j <= 100){
+        arrayfizz.push(j);
+        j++
+    }
+
+    arrayfizz.forEach(numero =>{
+        if(numero % 15 == 0){
+            console.log(`Número: ${numero} Fizzbuzz!`)
+        }
+        else if(numero % 3 == 0){
+            console.log(`Número: ${numero} Fizz`)
+        }
+        else if(numero % 5 == 0){
+            console.log(`Número: ${numero} buzz`)
+        }
+        else {
+            console.log(`Número: ${numero}`);
+        }
+    });
+}
+checkArray();
