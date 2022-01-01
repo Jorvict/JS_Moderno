@@ -34,3 +34,10 @@ for(let [llave,valor] of Object.entries(automovil)){
     console.log(valor)
     // console.log(llave)
 }
+
+
+/* Comentario: Veo el titulo de cada video de esas 
+secciones vistas y trato de dar un ejemplo de lo que se 
+hace en el video para así recordar lo que se hizo y si no 
+me acuerdo veo el video nuevamente, eso lo hago por 
+hay cada 2 o 3 días*/
