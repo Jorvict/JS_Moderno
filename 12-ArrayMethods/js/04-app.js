@@ -1,6 +1,7 @@
 // .filter
 /* Crea un nuevo arreglo en base a la condición que es
-evaluada */
+evaluada y añade los datos al array aquellos datos que
+cumplan con la condición */
 
 const carrito = [
     { nombre: 'Monitor 27 Pulgadas', precio: 500 },
