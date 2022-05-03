@@ -26,7 +26,7 @@ const producto = 'Monitor 24 pulgadas';
 
 
 // Limpiar la consola
-// console.clear();
+// console.clear(); a
 
 
 // Cronometrar la ejecución de un bloque de código, el 
