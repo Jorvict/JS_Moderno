@@ -20,3 +20,7 @@ resultado = carrito.filter( producto => producto.nombre !== 'Audifonos') // Todo
 resultado = carrito.filter( producto => producto.nombre === 'Audifonos') // Solo retorna "audifonos"
 
 console.log(resultado)
+
+resultado = carrito.filter( producto => producto.precio > 400 ); // Filtra mayores a 400
+
+resultado.forEach(resultado => console.log(`${resultado.nombre} y ${resultado.precio}`));

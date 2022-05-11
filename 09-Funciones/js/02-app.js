@@ -31,7 +31,9 @@ la función 2 muestra error, esto es debido a que JS se ejecuta en
 
     const sumar2;
 
-    sumar2();
+    sumar2(); (undefined)
+
+    sumar2 = function(){-----} (recién en este punto se asignó la función a la variable)
 
     Devolverá error debido a que no se le ha definido y asignado el
     valor de la función a la variable.

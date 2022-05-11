@@ -14,3 +14,19 @@ console.log(producto.nombre);
 /* En vez de utilizar el punto, se colocan corchetes y dentro, como string
     colocamos el nombre de la llave a la que deseamos acceder */
 console.log(producto['nombre']);
+
+console.log(producto['nombre']);
+
+console.log(producto['nombre']);
+
+console.log(producto['nombre']);
+
+console.log(producto['nombre']);
+
+console.log(producto['nombre']);
+
+console.log(producto['nombre']);
+
+console.log(producto['nombre']);
+
+console.log(producto['nombre']);
