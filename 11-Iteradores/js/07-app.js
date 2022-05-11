@@ -13,6 +13,10 @@ const carrito = [
     {nombre: 'Celular', precio: 700}, //Posición 5
 ]
 
+const dias = ['Lunes', 'Martes', 'Miércoles', 'Jueves'];
+
+const meses = ['Enero,', 'Febrero', 'Marzo', 'Abril']
+
 // "pendiente" es un alías que se refiere a cada una
 // de las iteraciones que retornará el for of, es decir,
 // es como el parámetro de un forEach
@@ -22,4 +26,12 @@ for( let pendiente of pendientes){
 
 for(let producto of carrito){
     console.log(producto.nombre);
+}
+
+for (let dia of dias){
+    console.log(dia);
+}
+
+for (let mes of meses){
+    console.log(mes);
 }

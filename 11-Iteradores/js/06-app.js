@@ -27,7 +27,7 @@ const carrito = [
     {nombre: 'Celular', precio: 700}, //Posición 5
 ]
 
-carrito.forEach( producto => producto.nombre);
+carrito.forEach( producto => console.log(producto.nombre));
 
 
 // .map
