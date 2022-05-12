@@ -18,3 +18,8 @@ console.log(contenedores);
 // (No mostará ningún error ni advertencia si la clase no existe, solo mostrará el Html collection vacío)
 const noExiste = document.getElementsByClassName('noExiste');
 console.log(noExiste); 
+
+
+// NOTA: Recordar que los métodos son sensibles a mayusculas, sí se escribe getElementsByClassName sin respetar las mayusculas
+// entonces el método no se podrá ejecutar, a pesar de que emmet facilita la escritura de la sintaxis, verificar que no se
+// presenten error de tipeo en el código
