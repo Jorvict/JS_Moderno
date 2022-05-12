@@ -1,3 +1,5 @@
+// Acceder a elementos HTML con document
+
 let elemento;
 
 elemento = document;                    // Es todo el HTML que tenemos en el documento
