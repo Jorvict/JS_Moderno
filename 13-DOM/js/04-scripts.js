@@ -1,4 +1,4 @@
-//querySelector
+// querySelector
 // Actual similar a getElementById en el sentido de que solo te retornará máximo 1 elemento, pero tiene la caracteristica de que permite seleccionar incluso clases
 // Es una sintaxis similar a los selectores de CSS
 
