@@ -2,7 +2,7 @@
 // Seleccionas elementos (Plural) por su clase y los retorna en un HTML collection (Similar a un array)
 
 // Imprimir header
-const header = document.getElementsByClassName('header'); // Tener cuidado ya que al escribir el nombre la clase, es sensible a Mayúsculas, escribir clase tal cual está en el HTML
+const header = document.getElementsByClassName('header'); // Tener cuidado ya que al escribir el nombre de la clase, es sensible a Mayúsculas, escribir clase tal cual está en el HTML
 console.log(header);
 
 // Imprimir Hero
