@@ -1,6 +1,6 @@
 // querySelectorAll
 // Es una variante de querySelector, la diferencia es que querySelector solo retorna el primer elemento y máximo retorna 1.
-// A diferencia de querySelectorAll, este no se va a limitar a retornar solamente el primero de los elementos filtrados.
+// A diferencia de querySelector, este no se va a limitar a retornar solamente el primero de los elementos filtrados.
 
 const card = document.querySelectorAll('.card');
 console.log(card);

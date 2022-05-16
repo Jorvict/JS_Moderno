@@ -1,5 +1,5 @@
 // querySelector
-// Actual similar a getElementById en el sentido de que solo te retornará máximo 1 elemento, pero tiene la caracteristica de que permite seleccionar incluso clases
+// Actua similar a getElementById en el sentido de que solo te retornará máximo 1 elemento, pero tiene la caracteristica de que permite seleccionar incluso clases
 // Es una sintaxis similar a los selectores de CSS
 
 const card = document.querySelector('.card'); // Hay varios cards en el DOM pero solo retornará el primero, en caso de que no exista no retornará nada

@@ -10,7 +10,7 @@ const hero = document.getElementsByClassName('hero');
 console.log(hero);
 
 
-// Sí las clases existen más de 1 vez, retornará un HTML coleection con todos los elementos que tienen ese nombre de clase
+// Sí las clases existen más de 1 vez, retornará un HTML collection con todos los elementos que tienen ese nombre de clase
 const contenedores = document.getElementsByClassName('contenedor');
 console.log(contenedores);
 
