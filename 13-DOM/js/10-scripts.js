@@ -4,7 +4,7 @@
 // const enlace = document.createElement('p'); Crear un parrafo en html
 
 // Creando elemento
-const enlace = document.createElement('A'); //La etiqueta que se pase a createElement puede estar en mayusculas o minusculas
+const enlace = document.createElement('A'); //La etiqueta que se pase a createElement puede estar en mayusculas o minusculas, pero se recomienda minusculas
 
 // Agregandole texto
 enlace.textContent = 'Nuevo enlace';
@@ -21,7 +21,7 @@ console.log(enlace);
 const navegacion = document.querySelector('.navegacion');
 
 // navegacion.appendChild(enlace); // Lo coloca al final de los hijos que tiene el elemento padre seleccionado
-// Requiere 2 argumentos, el primero es el elemento que vamos a agregar, el segundo argumento es donde deseamos mostrarlo
+// insertBefore requiere 2 argumentos, el primero es el elemento que vamos a agregar, el segundo argumento es donde deseamos mostrarlo
 // Como la sintaxis es insertBefore, se colocará el elemento justo antes del hijo seleccionado
 navegacion.insertBefore(enlace, navegacion.children[1])
 

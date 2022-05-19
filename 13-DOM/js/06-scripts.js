@@ -2,6 +2,7 @@
 const encabezado = document.querySelector('.contenido-hero h1');
 // const encabezado = document.querySelector('.contenido-hero h1').textContent; Se le conoce como "Chaining"
 console.log(encabezado);
+// encabezado.textContent = 'Titulo Prueba'
 
 // console.log(encabezado.innerText); // No va a encontrar los elementos que estén oculto con CSS utilizando el visibility: hidden 
 // console.log(encabezado.textContent); // Si los encuentra aunque estén ocultos

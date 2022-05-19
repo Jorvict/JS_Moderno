@@ -19,4 +19,7 @@ const encabezado = document.querySelector('h1');
 const card = document.querySelector('.card');
 card.classList.add('nueva-clase', 'segunda-clase'); // Agregar varias clases
 card.classList.remove('card') // Eliminar clase, sí deseas borrar varias, separa cada clase con comas ","
-console.log(card.classList); //Recordar: classList retorna las clases del elemento seleccionado en un array, className retorna las clases del elemento seleccionado como un string
+console.log(card.classList); 
+// Recordar: classList retorna las clases del elemento seleccionado en un array, 
+// className retorna las clases del elemento seleccionado como un string, 
+// se podría utilizar funciones sobre el string devuelto
