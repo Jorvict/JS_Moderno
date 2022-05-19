@@ -13,6 +13,9 @@ parrafo2.classList.add('titulo');
 const parrafo3 = document.createElement('p');
 parrafo3.textContent = '$800 por persona';
 parrafo3.classList.add('precio');
+parrafo3.onclick = function(){ // Evento que se ejecutara al hacerle click
+    nuevaFuncion(1); // Tener en cuenta esta sintaxis, ya que es común para consumir APIs
+};
 
 // crear el div...
 const info = document.createElement('div');
@@ -38,3 +41,8 @@ contenedorCard.appendChild(info);
 // Insertarlo en el HTML...
 const contenedor = document.querySelector('.hacer .contenedor-cards');
 contenedor.appendChild(contenedorCard); // al inicio info
+
+
+function nuevaFuncion(id){
+    console.log('Desde nueva función', id); // Se está usando la , para concatenar
+}
