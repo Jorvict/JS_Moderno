@@ -16,11 +16,11 @@ cardDiv.addEventListener('click', e => {
 });
 
 infoDiv.addEventListener('click', e => {
-    e.stopPropagation();
+    e.stopPropagation(); // Evita que al hacer click en info se ejecute el evento de card
     console.log('click en info');
 });
 
 titulo.addEventListener('click', e => {
-    e.stopPropagation();
+    e.stopPropagation(); // Evita que al hacer click en titulo se ejecute el evento de info y card
     console.log('click en titulo');
 });
