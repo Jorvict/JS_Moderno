@@ -3,6 +3,7 @@ const carrito = document.querySelector('#carrito');
 const contenedorCarrito = document.querySelector('#lista-carrito tbody');
 const vaciarCarritoBtn = document.querySelector('#vaciar-carrito');
 const listaCursos = document.querySelector('#lista-cursos');
+let articulosCarrito = [];
 
 
 
@@ -28,7 +29,9 @@ function agregarCurso(e){
 
 // Lee el contenido del HTML al que le dimos click y extrae la información del curso
 function leerDatosCurso(curso){
-    console.log(curso);
+
+    // Visualizar la estructura del card para facilitar el traversing
+    // console.log(curso);
 
     // Crear un objeto con el contenido del curso actual
     const infoCurso = {
@@ -38,8 +41,47 @@ function leerDatosCurso(curso){
         id: curso.querySelector('a').getAttribute('data-id'),
         cantidad: 1
     }
+    // Debuggear que el objeto esté extrayendo correctamente los datos desde el HTML
+    // console.log(infoCurso); 
+    
+    // Agregar elementos al arreglo de carrito
+    articulosCarrito = [...articulosCarrito, infoCurso]; // En este caso tambien sirve un .push debido a que se esta sobreescribiendo la variable del array original
+    console.log(articulosCarrito);
 
-    console.log(infoCurso);
+    carritoHTML();
+}
+
+// Muestra el carrito de compras en el HTML
+function carritoHTML(){
+
+    // Limpíar el HTML
+    limpiarHTML();
+
+    // Recorre el carrito y genera el HTML
+    articulosCarrito.forEach( curso => {
+        const row = document.createElement('tr'); // Crea una nueva etiqueta tr (Fila) cada vez que se agrega un nuevo item al carrito
+        
+        // Se genera el siguiente condigo HTML en el elemento tr creado recientemente, es decir, agrega la etiqueta td dentro de la etiqueta tr (se inyecta como td hijos de tr)
+        row.innerHTML = `
+            <td>
+                ${curso.titulo}                 
+            </td>
+        `;
+
+        // Agrega/Inyecta el HTML almacenado en la variable row y lo adiciona como un hijo de contenedorCarrito (que en realidad es el tbody)
+        contenedorCarrito.appendChild(row);
+    })
+
+}
+
+// Elimina los cursos del tbody
+function limpiarHTML(){
+    // Forma lenta
+    // contenedorCarrito.innerHTML = '';
+
+    while(contenedorCarrito.firstChild){ // Sí el elemento contenedorCarrito tiene al menos un elemento dentro (hijos), entonces el bucle se seguirá ejecutando. Y una vez esté vació, se detendrá el bucle
+        contenedorCarrito.removeChild(contenedorCarrito.firstChild);
+    }
 }
 
 
