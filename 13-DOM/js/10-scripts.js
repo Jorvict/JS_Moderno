@@ -14,7 +14,7 @@ enlace.href = '/nuevo-enlace';
 enlace.target = '_blank';
 enlace.setAttribute('data-enlace', 'nuevo-enlace');
 enlace.classList.add('alguna-clase');
-enlace.onclick = miFuncion;
+enlace.onclick = miFuncion; // Cuando se coloca funcion en un método onclick, no es necesario colocar ()
 console.log(enlace);
 
 // Seleccionar navegacion
