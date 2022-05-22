@@ -136,6 +136,5 @@ function limpiarHTML(){
 
 
 
-
 // NOTAS:
 // -    e.target es el elemento al que hacemos click
