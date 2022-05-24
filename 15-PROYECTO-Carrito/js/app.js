@@ -92,6 +92,8 @@ function carritoHTML(){
         const row = document.createElement('tr'); // Crea una nueva etiqueta tr (Fila) cada vez que se agrega un nuevo item al carrito
         
         // Se genera el siguiente condigo HTML en el elemento tr creado recientemente, es decir, agrega la etiqueta td dentro de la etiqueta tr (se inyecta como td hijos de tr)
+        // innerHTML cambia el texto dentro de la etiqueta seleccionada, sí el texto escrito está en lenguaje HTML
+        // entonces el navegador no lo renderizará como texto plano sino que lo mostrará como contenido html
         row.innerHTML = `
             <td>
                 <img src = '${imagen}' width = 100px>
