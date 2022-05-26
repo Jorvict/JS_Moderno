@@ -1,7 +1,5 @@
 // Agregar cursos al carrito
 // listar los cursos agregados
-
-
 // Eliminar cursos agregados
 // stackear cursos agregados
 
@@ -54,7 +52,7 @@ function leerCurso(cursoSeleccionado){
                 return cursoIterado;
             }
         });
-        
+
         articulosCarrito = [...new_articulosCarrito]
 
     } else{
@@ -96,8 +94,6 @@ function limpiarHTML() {
 function vaciarCarrito(e){
     e.preventDefault();
 
-    // console.log(e.target.classList.contains)
-
     if(e.target.classList.contains('button')){
         articulosCarrito = [];
         imprimirHTML();
@@ -108,7 +104,6 @@ function eliminarCurso(e){
     if(e.target.classList.contains('borrar-curso')){
 
         const cursoId = e.target.getAttribute('data-id');
-
         articulosCarrito = articulosCarrito.filter( curso => cursoId !== curso.id);
         // Lo que ejecuta el filter con arrow function
         // articulosCarrito = articulosCarrito.filter( curso => {
