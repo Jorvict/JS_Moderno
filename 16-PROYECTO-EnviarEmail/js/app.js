@@ -1,6 +1,10 @@
 // Variables
 const btnEnviar = document.querySelector('#enviar');
+const btnReset = document.querySelector('#resetBtn');
 const formulario = document.querySelector('#enviar-mail');
+// Expresión regular obtenida de https://emailregex.com/
+const er = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
 // Variables para campos
 const email = document.querySelector('#email');
 const asunto = document.querySelector('#asunto');
@@ -15,7 +19,13 @@ function eventListeners() {
     // Campos del formulario
     email.addEventListener('blur', validarFormulario);
     asunto.addEventListener('blur', validarFormulario);
-    mensaje.addEventListener('blur', validarFormulario);
+    mensaje.addEventListener('blur', validarFormulario);    
+    
+    // Enviar email
+    formulario.addEventListener('submit', enviarEmail);
+    
+    // Reinicia el formulario
+    btnReset.addEventListener('click', resetearFormulario);
 }
 
 
@@ -31,8 +41,10 @@ function validarFormulario(e){
     if(e.target.value.length > 0){
 
         // Elimina los errores
-        const error = document.querySelector('p.error')
-        error.remove();
+        const error = document.querySelector('p.error');
+        if(error){
+            error.remove();
+        }
 
         e.target.classList.remove('border', 'border-red-500');
         e.target.classList.add('border', 'border-green-500');
@@ -44,12 +56,12 @@ function validarFormulario(e){
     }
 
     if(e.target.type === 'email'){
-        // Expresión regular obtenida de https://emailregex.com/
-        const er = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
         if(er.test(e.target.value)){
             const error = document.querySelector('p.error');
-            error.remove();
+            if(error){
+                error.remove();
+            }
     
             e.target.classList.remove('border', 'border-red-500');
             e.target.classList.add('border', 'border-green-500');
@@ -62,6 +74,12 @@ function validarFormulario(e){
             mostrarError('Email no válido')
         }
     }
+
+    if( er.test(email.value) && asunto.value !== '' && mensaje.value !== ''){
+        btnEnviar.disabled = false;
+        btnEnviar.classList.remove('cursor-not-allowed', 'opacity-50');
+    } 
+
 }
 
 function mostrarError(mensaje){
@@ -80,6 +98,47 @@ function mostrarError(mensaje){
         // formulario.insertBefore(mensajeError, document.querySelector('.mb-10'));
         formulario.appendChild(mensajeError);
     }
+}
+
+function enviarEmail(e){
+    e.preventDefault();
+
+    // Mostrar el spinner
+    const spinner = document.querySelector('#spinner');
+    spinner.style.display = 'flex';
 
 
+    // Después de 3 segundos ocultar el spinner y mostrar el mensaje
+    setTimeout( () => {
+        spinner.style.display = 'none';
+
+
+        // Mensaje que indica que se envío correctamente
+        const parrafo = document.createElement('p');
+        parrafo.textContent = 'El mensaje se envió correctamente';
+        parrafo.classList.add('text-center', 'my-10', 'p-2', 'bg-green-500', 'text-white', 'font-bold', 'uppercase');
+
+        // Inserta el parrafo ántes del spinner
+        formulario.insertBefore(parrafo, spinner);
+
+        setTimeout(() => {
+            parrafo.remove(); // Eliminar mensaje de exito
+
+            resetearFormulario();
+        }, 5000);
+    }, 3000); // Cada 1000 equivale a 1 segundo
+
+    // Se ejecuta cada 3 segundos
+    // setInterval( () => {
+    //     console.log('Esta funcion se ejecuta cada 3 segundos');
+    // }, 3000);
+}
+
+
+// Función que resetea el formulario
+function resetearFormulario(e){
+
+    formulario.reset();
+
+    iniciarApp();
 }
