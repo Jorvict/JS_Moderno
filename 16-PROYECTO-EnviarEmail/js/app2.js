@@ -5,12 +5,12 @@ const formulario = document.querySelector('#enviar-mail');
 const btnEnviar = document.querySelector('#enviar');
 const btnReset = document.querySelector('#resetBtn');
 
-
-
 const emailtxt = document.querySelector('#email');
 const asuntotxt = document.querySelector('#asunto');
 const mensajetxt = document.querySelector('#mensaje');
 
+
+// Cargar eventListeners
 cargarEventListeners();
 function cargarEventListeners(){
     document.addEventListener('DOMContentLoaded', iniciarApp);
@@ -34,6 +34,7 @@ function iniciarApp(){
     mensajetxt.classList.remove('border-green-500', 'border-red-500');
 }
 
+// Valida que los campos no estén vacíos y que email tenga dominio válido
 function validarFormulario(e){
 
     if (e.target.value.length > 0){
@@ -51,12 +52,30 @@ function validarFormulario(e){
         imprimirError('Por favor llenar todos los campos');
     }
 
+    if(e.target.type === 'email'){
+        if(er.test(e.target.value)){
+            e.target.classList.remove('border', 'border-red-500');
+            e.target.classList.add('border', 'border-green-500');
+        
+            const error = document.querySelector('p.error');
+            if(error){
+                error.remove();
+            }
+        }
+        else{
+            e.target.classList.remove('border', 'border-green-500');
+            e.target.classList.add('border', 'border-red-500');
+            imprimirError('Email inválido');
+        }
+    }
+
     if(emailtxt.value !== '' && asuntotxt.value !== '' && mensajetxt.value !== ''){
         btnEnviar.disabled = false;
         btnEnviar.classList.remove('cursor-not-allowed', 'opacity-50');
     }
 }
 
+// Imprime el mensaje de error pasado como argumento según al función que lo llame
 function imprimirError(mensajeError){
     const parrafo = document.createElement('p');
     parrafo.textContent = mensajeError;
@@ -69,6 +88,7 @@ function imprimirError(mensajeError){
     }
 }
 
+// Envía la información escrita en el formulario
 function enviarFormulario(e){
     e.preventDefault();
 
@@ -92,6 +112,7 @@ function enviarFormulario(e){
     }, 3000);
 }
 
+// Vacía los campos y desactiva botón enviar
 function reiniciarFormulario(){
     formulario.reset();
     iniciarApp();
