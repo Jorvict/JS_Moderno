@@ -5,14 +5,22 @@
 
 // Variables
 const listaCursos = document.querySelector('#lista-cursos');
-const listaCompra = document.querySelector('#lista-carrito tbody')
+const listaCompra = document.querySelector('#lista-carrito tbody');
+const carritoContenedor = document.querySelector('#carrito');
 let articulosCarrito = [];
 
 
-listaCursos.addEventListener('click', agregarCurso);
+// Event listeners
+cargarEventListeners();
+function cargarEventListeners(){
+    
+    listaCursos.addEventListener('click', agregarCurso);
+    carritoContenedor.addEventListener('click', eliminarCurso)
+    carritoContenedor.addEventListener('click', vaciarCarrito);
+}
 
 
-
+// Funciones
 function agregarCurso(e){
 
     e.preventDefault();
@@ -23,25 +31,43 @@ function agregarCurso(e){
     }
 }
 
-    
 function leerCurso(cursoSeleccionado){
+
     const curso = {
         imagen: cursoSeleccionado.querySelector('img').src ,
         nombre: cursoSeleccionado.querySelector('h4').textContent,
         precio: cursoSeleccionado.querySelector('span').textContent,
+        id: cursoSeleccionado.querySelector('.button-primary').getAttribute('data-id'),
         cantidad: 1
     }
 
-    articulosCarrito = [...articulosCarrito, curso];
+    const existe = articulosCarrito.some( cursoIterado => cursoIterado.id === curso.id)
 
-    imprimirHTML(articulosCarrito);
+    if(existe){
+        const new_articulosCarrito = articulosCarrito.map( cursoIterado => {
+            if(cursoIterado.id === curso.id){
+                cursoIterado.cantidad++;
+                return cursoIterado;
+            } else{
+                return cursoIterado;
+            }
+        });
+
+        articulosCarrito = [...new_articulosCarrito]
+
+    } else{
+        articulosCarrito = [...articulosCarrito, curso];
+    }
+
+    imprimirHTML();
 }
 
-function imprimirHTML(articulosCarrito){
+function imprimirHTML(){
 
     limpiarHTML();
 
     articulosCarrito.forEach(curso => {
+        console.log(curso);
         insertRow = document.createElement('tr');
         insertRow.innerHTML = `
         <td>
@@ -57,11 +83,35 @@ function imprimirHTML(articulosCarrito){
         listaCompra.appendChild(insertRow);
         // console.log(insertRow);
     });
-
 }
 
 function limpiarHTML() {
     while(listaCompra.firstChild){
         listaCompra.removeChild(listaCompra.firstChild);
+    }
+}
+
+function vaciarCarrito(e){
+    e.preventDefault();
+
+    if(e.target.classList.contains('button')){
+        articulosCarrito = [];
+        imprimirHTML();
+    }
+}
+
+function eliminarCurso(e){
+    if(e.target.classList.contains('borrar-curso')){
+
+        const cursoId = e.target.getAttribute('data-id');
+        articulosCarrito = articulosCarrito.filter( curso => cursoId !== curso.id);
+        // Lo que ejecuta el filter con arrow function
+        // articulosCarrito = articulosCarrito.filter( curso => {
+        //     if(cursoId !== curso.id){
+        //         return curso;
+        //     }
+        // })
+
+        imprimirHTML()
     }
 }
