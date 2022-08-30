@@ -2,8 +2,9 @@
 const encabezado = document.querySelector('h1');
 // console.log(encabezado.style);
 
-/*  Una caracteristica que tienen los estilos en JS es que tienen otra sintaxis, similar pero diferente de CSS, si quieres usar un estilo en JS y su sintaxis es de 2 palabras,  
-    se elimina el "-" que separan ambas palabras y la primera letra a partir de la segunda palabra se escribira en mayusculas.
+/*  Una caracteristica que tienen los estilos en JS es que tienen otra sintaxis, similar pero diferente de CSS, si quieres usar un estilo en JS 
+    y su sintaxis es de 2 palabras, se elimina el "-" que separan ambas palabras y la primera letra a partir de la segunda palabra se escribira 
+    en mayusculas.
     Por ejemplo:
         CSS                             JS
             justify-content                 justifyContent

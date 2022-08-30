@@ -19,7 +19,7 @@ elemento = document.links[4];           // Accede al elemento ubicado en el índ
 elemento = document.links[4].classList; // Lista las clases del enlace ubicado en el indice 4 (Lo retorna como un DOMTokenList que igualmente es similiar a un array)
 elemento = document.links[4].className; // Lista las clases del enlace ubicado en el indice 4 (Lo retorna como un string)
 
-elemento = document.images;             // Muestra cuantas imágenes se están utilizando en el proyecto
+elemento = document.images;             // Retorna un HTML collectión con todas las imágenes que se están utilizando en el archivo
 
 elemento = document.scripts;            // Retorna un HTML collection con los diferentes scripts que tengamos en nuestro proyecto (Tambien incluyen scripts de extensiones)
 

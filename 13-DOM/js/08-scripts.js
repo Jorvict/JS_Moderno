@@ -9,13 +9,13 @@ const navegacion = document.querySelector('.navegacion');
 // console.log(navegacion.children[0].nodeName);
 // console.log(navegacion.children[0].nodeType);
 
-// card.children[1].children[1].textContent // Haciendo un traversing en el DOM para llegar al itulo de la primera card
+// card.children[1].children[1].textContent // Haciendo un traversing en el DOM para llegar al titulo de la primera card
 
 const card = document.querySelector('.card');
 card.children[1].children[1].textContent = 'Nuevo heading desde traversing the DOM';
 console.log(card.children[1].children[1].textContent);
 
-// Cambiar img utilizando thaversing the dom
+// Cambiar img utilizando traversing the dom
 card.children[0].src= 'img/hacer3.jpg';
 console.log(card.children[0]);
 

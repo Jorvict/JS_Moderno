@@ -15,7 +15,7 @@ const contenedores = document.getElementsByClassName('contenedor');
 console.log(contenedores);
 
 // Sí una clase no existe al intentar buscarla con getElementsByClassName, el HTML collection retornado estará vacío
-// (No mostará ningún error ni advertencia si la clase no existe, solo mostrará el Html collection vacío)
+// (No mostrará ningún error ni advertencia si la clase no existe, solo mostrará el Html collection vacío)
 const noExiste = document.getElementsByClassName('noExiste');
 console.log(noExiste); 
 
