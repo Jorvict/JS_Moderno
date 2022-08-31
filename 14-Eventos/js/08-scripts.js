@@ -13,9 +13,12 @@ parrafo2.classList.add('titulo');
 const parrafo3 = document.createElement('p');
 parrafo3.textContent = '$800 por persona';
 parrafo3.classList.add('precio');
-parrafo3.onclick = function(){ // Evento que se ejecutara al hacerle click
-    nuevaFuncion(1); // Tener en cuenta esta sintaxis, ya que es común para consumir APIs
+parrafo3.onclick = function(){ // Evento que se ejecutara recien al hacerle click
+    nuevaFuncion(1);    // Tener en cuenta esta sintaxis, ya que es común para consumir APIs o cuando se generan elementos HTML mediante scripting
+                        // y deseamos que estos ejecuten ciertas funciones al interactuar con ellos
 };
+// parrafo3.onclick = nuevaFuncion(1);  Sí se codifica de esta manera, se ejecutará la función cuando cargue el documento
+//                                      debido a los () que llaman a la funcion
 
 // crear el div...
 const info = document.createElement('div');
