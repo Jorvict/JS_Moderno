@@ -41,5 +41,6 @@ busqueda.addEventListener('input', (e) =>{
     }
 });
 
-/* Sí tienes un proyecto que consulte a un web service, puedes leer lo que el usuario esta escribiendo haciendo uso de e.target.value
-y con ello, enviarlo a un endpoint de una API. Adicionalmente tambien son útiles para validar */
+/* Sí tienes un proyecto que consulte a un web service, puedes leer lo que el usuario esta escribiendo 
+haciendo uso de e.target.value y con ello, enviarlo a un endpoint de una API. 
+Adicionalmente tambien son útiles para validar */
