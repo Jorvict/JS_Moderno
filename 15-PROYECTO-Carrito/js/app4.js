@@ -10,6 +10,8 @@ cargarEventsListeners();
 
 function cargarEventsListeners(){
     listaCursos.addEventListener('click', agregarCurso);
+
+    tablaCarrito.addEventListener('click', eliminarCurso);
 }
 
 
@@ -38,11 +40,43 @@ function procesarDatos(curso){
 
 
     const cursoExiste = carritoProductos.some( curso => curso.id === dataCursoSeleccionado.id);
-    console.log(cursoExiste);
 
-    carritoProductos= [...carritoProductos, dataCursoSeleccionado];
+    if(cursoExiste){
+
+        carritoProductos.forEach( curso => {
+            if(curso.id === dataCursoSeleccionado.id){
+                curso.cantidad++;
+                return curso;
+            } else{
+                return curso;
+            }
+        });
+
+    } else{
+
+        carritoProductos= [...carritoProductos, dataCursoSeleccionado];
+    }
 
     renderizarHTML();
+}
+
+function eliminarCurso(e){
+
+    e.preventDefault();
+
+    if(e.target.classList.contains('borrar-curso')){
+        
+        const idCursoEliminado = e.target.getAttribute('data-id');
+        const articulosNoEliminados = carritoProductos.filter(curso =>{
+            
+            if(curso.id !== idCursoEliminado){
+                return curso;
+            }
+        });
+
+        carritoProductos= [...articulosNoEliminados];
+        renderizarHTML();
+    }
 }
 
 function renderizarHTML(){
