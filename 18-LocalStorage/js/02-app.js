@@ -18,6 +18,9 @@ console.log(JSON.parse( productoJSON ));
 const meses = localStorage.getItem('meses');
 console.log(JSON.parse( meses ));
 
-const meses2 = localStorage.getItem('meses2');
-const meses2Array = JSON.parse( meses2 );
+// const meses2 = localStorage.getItem('meses2');
+// const meses2Array = JSON.parse( meses2 );
+// console.log(meses2Array);
+
+const meses2Array = JSON.parse( localStorage.getItem('meses2') );
 console.log(meses2Array);
