@@ -44,7 +44,8 @@ function Persona(nombre, saldo, telefono){
 
 // Pasamos todo el prototype de Cliente al prototype de Persona
 Persona.prototype = Object.create( Cliente.prototype );
-Persona.prototype.constructor = Cliente;
+// Persona.prototype.constructor = Cliente;
+Persona.prototype.constructor = Persona;
 
 // Instanciar
 const jorvict = new Persona('Jorvict', 5000, 987654321);
