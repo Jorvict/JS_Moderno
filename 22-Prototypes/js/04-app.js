@@ -42,7 +42,7 @@ function Persona(nombre, saldo, telefono){
 // Se debe heredar las funciones delos prototypes antes de realizar 
 // una instancia, caso contrario marcará error
 
-// Pasamos todo el prototype de Cliente al prototype de Persona
+// Pasamos todo el prototype de Cliente al prototype de Persona (esto incluye el constructor)
 Persona.prototype = Object.create( Cliente.prototype );
 // Persona.prototype.constructor = Cliente;
 Persona.prototype.constructor = Persona;
