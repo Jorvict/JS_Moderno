@@ -215,7 +215,6 @@ function cotizarSeguro(e){
 }
 
 
-
 //NOTAS: 
 /*  class = "capitalize". 
     Al utilizar tailwind con esta clase, la primera letra de la primera palabra 
