@@ -6,7 +6,7 @@ function Seguro(marca, year, tipo){
     this.tipo = tipo;
 }
 
-// Realiza la contización con los datos
+// Realiza la cotización con los datos
 Seguro.prototype.cotizarSeguro = function(){
     /*
         1 = Americano 1.15
