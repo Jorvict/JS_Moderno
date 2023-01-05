@@ -7,7 +7,9 @@ const reproductor = {
     borrar: id => console.log(`Borrando canción con el id ${id}`) ,
     crearPlaylist: nombre => {
         console.log(`Creando playlist "${nombre}".`);
-        reproductor.reproducirPlaylist(nombre); // No se puede usar this ya que el contexto solo aplicaría dentro del rango de "crearPlaylist"
+        // No se puede usar this ya que al usar arrow function previamente, el scope del this va a ser global.
+        // Es decir, buscará la referencia en la ventana global y no en el objeto actual (reproductor)
+        reproductor.reproducirPlaylist(nombre); 
     },
     reproducirPlaylist: nombre => console.log(`Reproduciendo playlist "${nombre}".`),
 
