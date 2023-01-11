@@ -10,6 +10,7 @@ eventListeners();
 function eventListeners(){
     
     document.addEventListener('DOMContentLoaded', preguntarPresupuesto );
+    formulario.addEventListener('submit', agregarGasto);
 }
 
 
@@ -22,14 +23,48 @@ class Presupuesto{
         this.restante = Number(presupuesto);
         this.gastos = [];
     }
+
+    nuevoGasto(gasto){
+        
+        this.gastos = [...this.gastos, gasto];
+        console.log(this.gastos);
+    }
 }
 
 class UI{
 
     insertarPresupuesto(cantidad){
+        // Extrayendo los valores
         const {presupuesto, restante} = cantidad;
+
+        // Agregar al HTML
         document.querySelector('#total').textContent = presupuesto;
         document.querySelector('#restante').textContent = restante;
+    }
+
+    imprimirAlerta(mensaje, tipo){
+
+        // Crear el div
+        const divMensaje = document.createElement('div');
+        divMensaje.classList.add('text-center', 'alert'); // Clases de Bootstrap
+    
+        if(tipo === 'error'){
+            divMensaje.classList.add('alert-danger');
+        } else {
+            divMensaje.classList.add('alert-success');
+        }
+
+        // Mensaje de error
+        divMensaje.textContent = mensaje;
+
+        // Insertar en el HTML
+        document.querySelector('.primario').insertBefore(divMensaje, formulario);
+    
+        // Quitar mensaje del HTML
+        setTimeout(() => {
+            divMensaje.remove();
+        }, 2000);
+    
     }
 }
 
@@ -59,7 +94,7 @@ function preguntarPresupuesto(){
     // console.log(parseFloat(presupuestoUsuario));
     // console.log( Number(presupuestoUsuario) );
 
-    if(presupuestoUsuario === '' || presupuestoUsuario === null || isNaN(presupuestoUsuario) || preguntarPresupuesto <= 0 ){
+    if(presupuestoUsuario === '' || presupuestoUsuario === null || isNaN(presupuestoUsuario) || presupuestoUsuario <= 0 ){
 
         window.location.reload();
     }
@@ -69,4 +104,40 @@ function preguntarPresupuesto(){
     console.log(presupuesto)
 
     ui.insertarPresupuesto(presupuesto);
+}
+
+// Añade gastos
+function agregarGasto(e){
+
+    e.preventDefault();
+
+    // Leer los datos del formulario
+    const nombre = document.querySelector('#gasto').value;
+    const cantidad = Number(document.querySelector('#cantidad').value);
+
+    // Validar
+    if(nombre === '' || cantidad === ''){
+        
+        ui.imprimirAlerta('Ambos campos son obligatorios', 'error');
+        return;
+    } else if( cantidad <= 0 || isNaN(cantidad)){
+
+        ui.imprimirAlerta('Cantidad no válida', 'error');
+        return;
+    }
+
+    // Generar un objeto con el gasto
+    // Esto es lo contrario a un destructuring, esto une o comprime
+    // nombre y cantidad fusionandolos ahora en el objeto "gasto"
+    // Este proceso se conoce como Object Literal Enhacement
+    const gasto = {nombre, cantidad, id: Date.now()};
+
+    // Añade un nuevo gasto
+    presupuesto.nuevoGasto( gasto );
+
+    // Mensaje de éxito
+    ui.imprimirAlerta('Gasto agregado correctamente', 'correcto');
+
+    // Reinicia el formulario
+    formulario.reset();
 }
