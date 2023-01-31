@@ -15,6 +15,12 @@ class Citas {
     constructor(){
         this.citas = [];
     }
+
+    agregarCita(cita){
+
+        this.citas = [... this.citas, cita];
+        console.log(this.citas)
+    }
 }
 
 class UI{
@@ -44,6 +50,10 @@ class UI{
         setTimeout(() => {
             divMensaje.remove();
         }, 3000);
+    }
+
+    imprimirCitas(citas){
+        console.log(citas);
     }
 }
 
@@ -84,7 +94,6 @@ function datosCita(e){
         igual que el nombre de la  key en el objeto
     */
     citaObj[e.target.name] = e.target.value;
-    console.log(citaObj);
 }
 
 // Valida y agrega una nueva cita a la clase de citas
@@ -107,5 +116,35 @@ function nuevaCita(e){
     citaObj.id = Date.now();
 
     // Creando una nueva cita
+    /* 
+        Al pasar el "objeto" en realidad estamos pasando una referencia
+        y citaObj al ser un objeto global la referencia siempre va a ser
+        la misma, esto quiere que decir que si agregamos varias citas
+        todas harán referencia al "citaObj" de ese momento, ergo los
+        objetos se van a repetir con los datos de la última cita
+        ingresada, para evitar esto lo que se va a hacer es PASAR UNA
+        COPIA del citaObj actual, de esta forma solo se ingresara
+        en el array el valor que tenía citaObj especificamente en
+        ese momento, para pasar la copia solo agregamos spread operator. 
+    */
+    administrarCitas.agregarCita({...citaObj});
 
+    // Reiniciar el objeto (Ya que el objeto al ser global no pierde la data almacenada)
+    reiniciarObjeto();
+    
+    // Reiniciar el formulario
+    formulario.reset();
+
+    // Mostrar el HTML de las citas
+    ui.imprimirCitas(administrarCitas);
+}
+
+function reiniciarObjeto(){
+
+    citaObj.mascota = '';
+    citaObj.propietario = '';
+    citaObj.telefono = '';
+    citaObj.fecha = '';
+    citaObj.hora = '';
+    citaObj.sintomas = '';
 }
