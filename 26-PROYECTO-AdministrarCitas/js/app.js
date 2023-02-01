@@ -27,6 +27,29 @@ class Citas {
 
         this.citas = this.citas.filter( cita => cita.id !== id);
     }
+
+    editarCita(citaActualizada){
+
+        /* Se utiliza .map y no .filter porque filter va a quitar un elemento o
+        va a quitar los demás y mantener un único elemento basado en una condición,
+        es decir está EDITANDO el array, sin embargo .map lo que hace es crear un
+        nuevo arreglo, por lo tanto va a re-escribir todo el array desde cero */
+
+        this.citas = this.citas.map( cita => cita.id === citaActualizada.id ? citaActualizada : cita );
+
+        /* Explicación del operador ternario superior: En caso de que el id
+        de la citaActualizada sea igual al de la cita iterada en el .map lo
+        que sucedera es que el objeto completo de citaActualizada sobreescribirá
+        al objeto de cita iterado, de está forma los nuevos valores que han sido
+        registrados en la edición sobreescribirán a los antiguos, y en caso
+        contrario que los id no sean iguales simplemente se retornará la cita iterada
+        que ya estaba establecida, ya que no ha habido ninguna modificación y así
+        no se perderían aquellas citas que no se modificaron .
+        NOTA: En sí lo que sucede es que el map está creando un array que solo
+        imprimirá aquellas citas que sean devueltas en cada iteración, sí los
+        ids son distintos entonces retornará el objeto de cita iterado, pero
+        si los ids son iguales entonces retornará el objeto de citaActualizada */
+    }
 }
 
 class UI{
@@ -209,10 +232,14 @@ function nuevaCita(e){
         ui.imprimirAlerta('Editado correctamente', 'success');
         
         // Pasar el objeto de la cita a edición
+        // NOTA: Recordar que al ser un objeto global no debemos pasar la referencia
+        // del objeto sino una copia del mismo.
+        administrarCitas.editarCita({...citaObj});
 
+        // Regresar el texto del botón a su estado original
+        formulario.querySelector('button[type="submit"]').textContent = 'Crear Cita';
 
         // Quitar modo edición
-        formulario.querySelector('button[type="submit"]').textContent = 'Crear Cita';
         editando = false;
 
     } else {
