@@ -27,6 +27,7 @@ function crearIterador(carrito){
             entonces retornará undefined */
             const valor = !fin ? carrito[i++] : undefined ;
 
+            // Retornamos los valores obtenidos en la iteración
             return{
                 fin,
                 valor
