@@ -3,6 +3,22 @@ o variables que se encuentren en el scope global y sean de utilidad
 para la ejecución de las funciones */
 /* En los archivos de funciones muy probablemente no vamos a
 necesitar exportar las variables sino las funciones */
+/* A la hora de importar un paquete en JS se recomienda colocar el import
+con las llaves{} vacías y luego colocar el from y la ruta ántes de importar
+cualquier elemento, esto se sugiere para que el editor te ayude a autocompletar
+el nombre de las variables y así evitar errores de sintaxis */
+
+import Citas from './classes/Citas.js';
+import UI from './classes/UI.js';
+import { 
+    mascotaInput, 
+    propietarioInput, 
+    telefonoInput, 
+    fechaInput, 
+    horaInput, 
+    sintomasInput, 
+    formulario
+} from './selectores.js';
 
 const administrarCitas = new Citas();
 const ui = new UI(administrarCitas);
