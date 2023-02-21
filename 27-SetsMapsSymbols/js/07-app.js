@@ -40,7 +40,7 @@ function *generadorCarrito( carrito ){
 const carrito = ['Producto 1', 'Producto 2', 'Producto 3'];
 const iterador = generadorCarrito(carrito);
 
-console.log( iterador.next() );
-console.log( iterador.next() );
+console.log( iterador.next().value );
+console.log( iterador.next().done );
 console.log( iterador.next() );
 console.log( iterador.next() );

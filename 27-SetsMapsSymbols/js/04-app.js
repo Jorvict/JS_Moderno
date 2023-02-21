@@ -16,7 +16,7 @@ console.log(weakmap.has(producto));
 console.log(weakmap.get(producto));
 
 // No puedes conocer la extensión de un WeakMap
-console.log(weakmap.size); // Retorna undefines porque no se puede saber
+console.log(weakmap.size); // Retorna undefined porque no se puede saber
 
 // Eliminar un valor
 console.log(weakmap.delete(producto));

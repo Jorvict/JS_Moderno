@@ -52,10 +52,29 @@ carrito.forEach( (producto, index, pertenece) => {
 console.log(carrito);
 
 
+// Obsoleto
+const numerosarray = [1, 2, 2, 3, 4, 4, 5];
+
+const unicos = [];
+
+numerosarray.forEach( (elemento) => {
+
+  if (!unicos.includes(elemento)) {
+    unicos.push(elemento);
+  }
+
+});
+
+console.log(unicos); // [1, 2, 3, 4, 5]
+
+
 // Ejemplo de uso de un Set
 // === Del siguiente arreglo elimina los duplicados
 const numeros = [10, 20, 30, 20, 40, 10, 30, 50, 10, 20];
 
 const noDuplicados = new Set(numeros);
-
+// const noDuplicados = [... new Set(numeros)]; tambien es valido
 console.log(noDuplicados);
+
+
+
