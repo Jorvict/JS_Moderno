@@ -34,8 +34,9 @@
         EJ: const indexDB = indexedDB;
 */
 const indexedDB = window.indexedDB;
+const form = document.getElementById('form');
 
-if(indexedDB){
+if(indexedDB && form){
 
     // Crear variable para almacenar base de datos
     let db;
@@ -77,7 +78,15 @@ if(indexedDB){
         console.log(`DB "${db.name}" created`);
 
         // Crear Object Store, le pasamos como argumento su nombre
-        const objectStore = db.createObjectStore('tasks')
+        // Sí colocamos una , habilitamos un segundo argumento
+        //     en el que podemos definir sí el OS contará con autoincrement 
+        const objectStore = db.createObjectStore('tasks', {
+            // autoIncrement: true
+
+            // Que propiedad de nuestro objeto será la clave única (La llave/key)
+            // Debe ser un valor irrepetible, EJ: en OS de personas deben ser el DNI
+            keyPath: 'taskTitle'
+        });
     }
 
     // Método que se ejecuta sí se ha presentado algún error
@@ -117,5 +126,44 @@ if(indexedDB){
 
     }
 
+    // Evento de cuando se hace submit al botón del formulario
+    form.addEventListener('submit', (e) => {
 
+        e.preventDefault();
+
+        // Generar objeto de data que se va a almacenar en el objectStore
+        const data = {
+
+            //e.target.task hace referencia al input text del formulario
+            taskTitle: e.target.task.value, 
+            taskPriority: e.target.priority.value,
+        }
+        addData(data);
+    });
+
+    // Función encargada de registrar el objeto en la DB
+    /*  NOTA: Para registrar datos en la DB hay que fragmentar el
+            proceso en 3 pasos, lo primero es que todas las operaciones
+            sobre una DB indexada funcionan a través de lo que se 
+            denomina como una "TRANSACCIÓN", estas reciben 2 parámetros,
+            el almacén sobre el que vamos a trabajar y de qúe modo 
+            vamos a trabajar, o sea sí solo vamos a leer los datos
+            (readonly) o sí vamos a modificar datos (readwrite)
+    */
+    const addData = (data) => {
+
+        // Generamos la transacción
+        // Aquí específicamos sobre cual OS vamos a hacer la transacción
+        // y cual es el modo
+        const transaction = db.transaction(['tasks'], 'readwrite');
+
+        // Ahora necesitamos abrir el almacén de datos donde trabajaremos
+        // Aquí hacemos la transacción realmente
+        const objectStore = transaction.objectStore('tasks')
+
+        // Una vez abierto el almacén solo debemos indicar que se
+        // añadan los datos usando el método .add y le pasamos como
+        // parametro el objeto a agregar
+        const request = objectStore.add(data);
+    }
 }
