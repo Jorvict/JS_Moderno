@@ -7,7 +7,7 @@
 
     # Crear el almacén de objetos con el método createObjectStore()
         En el caso de otras bases de datos no relacionadas como
-        Firebase o MongoDB a estos almecenes los denominan como 
+        Firebase o MongoDB a estos almacenes los denominan como 
         "Colecciones". NOTA: Estos almacenes cumplen una función 
         similar a la de las tablas en SQL, que es almacenar objetos
         mientras que en SQL es almacenar registros
