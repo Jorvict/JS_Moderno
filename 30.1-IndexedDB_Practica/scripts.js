@@ -252,6 +252,8 @@ if(indexedDB && form){
 
                     const taskDelete = document.createElement('button');
                     taskDelete.textContent = 'Delete';
+                    taskDelete.dataset.type = 'delete';
+                    taskDelete.dataset.key = cursor.key;
                     fragment.appendChild(taskDelete);
                     
                     /* Cursor.continue se utiliza para indicarle al cursor 
@@ -290,7 +292,13 @@ if(indexedDB && form){
     tasks.addEventListener('click', (e) =>{
 
         if(e.target.dataset.type == 'update'){
+
+            // En caso de que se haga click en el botón actualizar
             getData(e.target.dataset.key);
+        } else if(e.target.dataset.type == 'delete'){
+        
+            // En caso de que se haga click en el botón eliminar
+            deleteData(e.target.dataset.key);
         }
     });
 
@@ -341,4 +349,33 @@ if(indexedDB && form){
             readData();
         }
     }
+
+
+    // ================ DELETE ================
+    // Función encargada de eliminar los datos
+    const deleteData = (key) => {
+
+        const transaction = db.transaction(['tasks'], 'readwrite');
+        const objectStore = transaction.objectStore('tasks')
+
+        // Cambiamos el .put por .delete, esto lo que hace es borrar del OS
+        const request = objectStore.delete(key);
+
+        request.onsuccess = () => {
+            readData();
+        }
+    }
+
 }
+
+/* Contenido extra que se podría investigar:
+
+        Método getAll() para obtener todos los registros de la DB
+        Método clear() para borrar objetos del almacén
+        Método deleteDatabase() para borrar la base de datos
+        Método onBlocked() para bloquear la DB en los cambios de versión
+        Objeto IDBKeyRange para búsquedas en las DB
+        Método createIndex() para la creación de índices en la DB
+        Versionado de DB
+        Implementación de librería Dexie.js para utilización de IndexedDB
+*/
