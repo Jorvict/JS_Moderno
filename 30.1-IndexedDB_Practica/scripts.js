@@ -138,7 +138,22 @@ if(indexedDB && form){
             taskTitle: e.target.task.value, 
             taskPriority: e.target.priority.value,
         }
-        addData(data);
+
+        // Evaluación de condición para validar sí agregará o actualizará
+        // e sería el evento. target sería el formulario.
+        // button es el btn del form. dataset es el atributo personalizado
+        // y action es el valor de dicho dataset
+        if(e.target.button.dataset.action == 'add'){
+
+            // Entra en flujo condicional para agregar un nuevo valor
+            addData(data);
+        } else if(e.target.button.dataset.action == 'update'){
+
+            // Entra en flujo condicional para actualizar un valor
+            updateData(data);
+        }
+
+        form.reset();
     });
 
     // ============================== CRUD ==============================
@@ -228,6 +243,18 @@ if(indexedDB && form){
                     const taskPriority = document.createElement('p');
                     taskPriority.textContent = cursor.value.taskPriority;
                     fragment.appendChild(taskPriority);
+
+                    const taskUpdate = document.createElement('button');
+                    taskUpdate.dataset.type = 'update';
+                    taskUpdate.dataset.key = cursor.key;
+                    taskUpdate.textContent = 'Update';
+                    fragment.appendChild(taskUpdate);
+
+                    const taskDelete = document.createElement('button');
+                    taskDelete.textContent = 'Delete';
+                    taskDelete.dataset.type = 'delete';
+                    taskDelete.dataset.key = cursor.key;
+                    fragment.appendChild(taskDelete);
                     
                     /* Cursor.continue se utiliza para indicarle al cursor 
                         que siga leyendo mientras el objectStore siempre que
@@ -259,4 +286,96 @@ if(indexedDB && form){
         }
 
 
+    // ================ UPDATE ================
+    // Función encargada de actualizar los datos
+
+    tasks.addEventListener('click', (e) =>{
+
+        if(e.target.dataset.type == 'update'){
+
+            // En caso de que se haga click en el botón actualizar
+            getData(e.target.dataset.key);
+        } else if(e.target.dataset.type == 'delete'){
+        
+            // En caso de que se haga click en el botón eliminar
+            deleteData(e.target.dataset.key);
+        }
+    });
+
+
+    // Función que nos dará la información sobre el elemento que vamos
+    // a actualizar, copiamos la base de addData
+    const getData = (key) => {
+
+        const transaction = db.transaction(['tasks'], 'readwrite');
+        const objectStore = transaction.objectStore('tasks')
+
+        // En vez de añadir datos lo que vamos a hacer es obtener datos
+        // Cambiamos el .add por .get
+        const request = objectStore.get(key);
+
+        request.onsuccess = () => {
+
+            // form.task.value hace referencia al valor del input text del form
+            form.task.value = request.result.taskTitle;
+            
+            // form.priority.value hace referencia al valor del select del form
+            form.priority.value = request.result.taskPriority;
+
+            // Al hacer click en uno de los botones de update modificamos el 
+            // action del button de add task para que en vez de agregar, actualice 
+            form.button.dataset.action = 'update';
+
+            // Modificar el texto del button cuando se encuentre en modo edición
+            form.button.textContent = 'Update Task';
+        }
+    }
+
+    // Generar la actualización con la data extraída
+    const updateData = (data) => {
+
+        const transaction = db.transaction(['tasks'], 'readwrite');
+        const objectStore = transaction.objectStore('tasks')
+
+        // En vez de añadir datos lo que vamos a hacer es obtener datos
+        // Cambiamos el .add por .put, esto lo que hace es que si el
+        // dato existe lo actualiza, y sí no existe entonces lo crea
+        const request = objectStore.put(data);
+        request.onsuccess = () => {
+
+            // Reiniciar el action del button luego de haber actualizado un registro
+            form.button.dataset.action = 'add';
+            form.button.textContent = 'Add Task';
+            readData();
+        }
+    }
+
+
+    // ================ DELETE ================
+    // Función encargada de eliminar los datos
+    const deleteData = (key) => {
+
+        const transaction = db.transaction(['tasks'], 'readwrite');
+        const objectStore = transaction.objectStore('tasks')
+
+        // Cambiamos el .put por .delete, esto lo que hace es borrar del OS
+        const request = objectStore.delete(key);
+
+        request.onsuccess = () => {
+            readData();
+        }
+    }
+
 }
+
+/* Contenido extra que se podría investigar:
+
+        Método getAll() para obtener todos los registros de la DB
+        Método clear() para borrar objetos del almacén
+        Método deleteDatabase() para borrar la base de datos
+        Método onBlocked() para bloquear la DB en los cambios de versión
+        Objeto IDBKeyRange para búsquedas en las DB
+        Método createIndex() para la creación de índices en la DB
+        Versionado de DB
+        Implementación de librería Dexie.js para utilización de IndexedDB
+*/
