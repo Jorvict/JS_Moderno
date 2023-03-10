@@ -136,6 +136,8 @@ if(indexedDB && form){
 
             //e.target.task hace referencia al input text del formulario
             taskTitle: e.target.task.value, 
+
+            //e.target.task hace referencia al select del formulario
             taskPriority: e.target.priority.value,
         }
 
@@ -209,7 +211,8 @@ if(indexedDB && form){
     
             // Una vez abierto el almacén solo debemos indicar que se
             // lean los datos usando un cursor, este se encarga de recorrer
-            // cada uno de los objetos y devolviendonos su valor
+            // cada uno de los objetos y devolviendonos su valor en cada 
+            // iteración
             const request = objectStore.openCursor();
 
             // Crear un fragmento
@@ -289,6 +292,7 @@ if(indexedDB && form){
     // ================ UPDATE ================
     // Función encargada de actualizar los datos
 
+    // Función que valida cuando se haga click en los botones de un registro
     tasks.addEventListener('click', (e) =>{
 
         if(e.target.dataset.type == 'update'){
