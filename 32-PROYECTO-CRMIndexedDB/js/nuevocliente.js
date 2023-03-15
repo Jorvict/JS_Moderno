@@ -43,8 +43,38 @@
             
             return;
         }
+
+        // Crear un objeto con la información
+        const cliente = {
+            nombre,
+            email,
+            telefono,
+            empresa,
+            id: Date.now()
+        }
+
+        crearNuevoCliente(cliente);
     }
 
+    function crearNuevoCliente(cliente){
+        
+        const transaction = DB.transaction(['clientes'], 'readwrite');
+        const objectStore = transaction.objectStore('clientes');
+        objectStore.add(cliente);
+
+        transaction.onerror = function(){
+            imprimirAlerta('Hubo un error', 'error');
+        };
+        transaction.oncomplete = function(){
+            imprimirAlerta('El cliente se agregó correctamente', 'success');
+            formulario.reset();
+
+            // Irnos hacia otro documento HTML
+            setTimeout(() => {
+                window.location.href = 'index.html';
+            }, 2000);
+        }
+    }
 
     function imprimirAlerta(mensaje, tipo){
 
