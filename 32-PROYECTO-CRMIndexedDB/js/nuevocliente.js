@@ -1,13 +1,11 @@
 (function(){
 
-    let DB;
     const formulario = document.querySelector('#formulario');
 
     document.addEventListener('DOMContentLoaded', () =>{
 
         // Conectar a la DB
         conectarDB();
-
         formulario.addEventListener('submit', validarCliente);
 
     });
