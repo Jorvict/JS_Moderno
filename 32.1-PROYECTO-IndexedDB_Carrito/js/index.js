@@ -78,6 +78,7 @@ function agregarCurso(curso){
 
 function listarCarrito(){
 
+    limpiarHTML();
     const objectStore = DB.transaction('cursos').objectStore('cursos');
 
     objectStore.openCursor().onsuccess = (e) =>{
@@ -105,5 +106,13 @@ function listarCarrito(){
 
             console.log('No hay más registros')
         }
+    }
+}
+
+function limpiarHTML(){
+
+    while(contenedorCarrito.firstChild){
+
+        contenedorCarrito.removeChild(contenedorCarrito.firstChild);
     }
 }
