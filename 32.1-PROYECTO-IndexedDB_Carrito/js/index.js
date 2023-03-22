@@ -1,7 +1,7 @@
 let DB;
+let objCurso;
 const listaCursos = document.querySelector('#lista-cursos');
 const contenedorCarrito = document.querySelector('#lista-carrito tbody');
-
 
 
 inicializarEventListeners();
@@ -33,7 +33,7 @@ function crearDB(){
         objectStore.createIndex('nombre', 'nombre', { unique: false });
         objectStore.createIndex('precio', 'precio', { unique: false });
         objectStore.createIndex('cantidad', 'cantidad', { unique: false });
-        objectStore.createIndex('id', 'id', { unique: true });   
+        objectStore.createIndex('id', 'id', { unique: false });   
     }
 }
 
@@ -50,30 +50,97 @@ function seleccionarCurso(e){
 
 function leerDataCurso(cursoSeleccionado){
 
-    const objCurso = {
+    objCurso = {
         imagen: cursoSeleccionado.querySelector('img').src,
         nombre: cursoSeleccionado.querySelector('h4').textContent,
         precio: cursoSeleccionado.querySelector('.precio span').textContent,
-        cantidad: 1,
-        id: Date.now(),
+        cantidad: '',
+        id: Number(cursoSeleccionado.querySelector('a').getAttribute('data-id')),
     }
 
-    agregarCurso(objCurso);
+    validarCurso(objCurso);
 }
 
-function agregarCurso(curso){
+function validarCurso(curso){
 
-    const transaction = DB.transaction(['cursos'], 'readwrite');
-    const objectStore = transaction.objectStore('cursos');
-    objectStore.add(curso);
+    const { id } = curso;
 
-    transaction.onerror = function(){
-        console.log('Hubo un error en la transacción');
+    const nuevaPromesa = new Promise((resolve, reject) =>{
+
+        const transaction = DB.transaction(['cursos'], 'readonly');
+        const objectStore = transaction.objectStore('cursos');
+        const cursos = objectStore.openCursor();
+
+        cursos.onsuccess = function(e){
+
+            const cursor = e.target.result;
+            
+            if(cursor){
+    
+                if(Number(id) === cursor.value.id){
+                    resolve(true);
+                    
+                } else {
+                    cursor.continue();
+                }
+            } else{
+
+                resolve(false);
+            }
+        }
+        cursos.onerror = (e) =>{
+            console.log('Error:', e.target.error);
+        }
+    });
+
+    nuevaPromesa
+        .then(resultado =>{
+            agregarCurso(resultado);
+        })
+
+    return nuevaPromesa;
+}
+
+function agregarCurso(cursoExiste){
+
+    if(cursoExiste){
+
+        const transaction = DB.transaction(['cursos'], 'readwrite');
+        const objectStore = transaction.objectStore('cursos');
+        let request = objectStore.get(objCurso.id);
+
+        request.onsuccess = (e) =>{
+
+            let curso = e.target.result;
+            curso.cantidad += 1;
+            objectStore.put(curso);
+
+            transaction.oncomplete = function(){
+
+                // console.log('Editado correctamente'); // Imprimir mensaje
+            }
+            transaction.onerror = function(error){
+                
+                console.log(error);
+            }
+        }
+
+    } else{
+        objCurso.cantidad = 1;
+
+        const transaction = DB.transaction(['cursos'], 'readwrite');
+        const objectStore = transaction.objectStore('cursos');
+        objectStore.add(objCurso);
+
+        transaction.onerror = function(error){
+            console.log('Hubo un error en la transacción', error.target.error);
+        }
+        transaction.oncomplete = function(){
+            // console.log('Se agregó curso a base de datos'); Imprimir mensaje
+        }
     }
-    transaction.oncomplete = function(){
-        console.log('Se agregó curso a base de datos');
-        listarCarrito()
-    }
+
+    listarCarrito();
 }
 
 function listarCarrito(){
@@ -101,10 +168,7 @@ function listarCarrito(){
                 </td>
             </tr>`;
 
-            cursor.continue()
-        } else{
-
-            console.log('No hay más registros')
+            cursor.continue();
         }
     }
 }
