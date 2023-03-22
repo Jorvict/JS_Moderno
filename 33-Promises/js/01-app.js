@@ -4,6 +4,8 @@
 
 const paises = ['Francia', 'España', 'Portugal', 'Australia', 'Inglaterra'];
 
+// Como primer argumento se le pasa un valor
+// Como segundo argumento se le pasa un callback
 function nuevoPais( pais, callback){
     
     setTimeout(() => {
