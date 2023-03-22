@@ -3,7 +3,7 @@ let objCurso;
 const listaCursos = document.querySelector('#lista-cursos');
 const contenedorCarrito = document.querySelector('#lista-carrito tbody');
 const carrito = document.querySelector('#carrito');
-
+const vaciarCarritoBtn = document.querySelector('#vaciar-carrito');
 
 
 inicializarEventListeners();
@@ -12,6 +12,7 @@ function inicializarEventListeners(){
     document.addEventListener('DOMContentLoaded', crearDB);
     listaCursos.addEventListener('click', seleccionarCurso);
     carrito.addEventListener('click', eliminarCurso);
+    vaciarCarritoBtn.addEventListener('click', vaciarCarrito);
 }
 
 function crearDB(){
@@ -195,6 +196,24 @@ function eliminarCurso(e){
             console.log('Hubo un error');
         }
     }
+}
+
+function vaciarCarrito(){
+
+    const transaction = DB.transaction(['cursos'], 'readwrite');
+    const objectStore = transaction.objectStore('cursos');
+    objectStore.clear();
+
+    transaction.oncomplete = () =>{
+        
+        console.log('Se vació el carrito');
+    }
+    transaction.onerror = () =>{
+
+        console.log('Hubo un error al vaciar el carrito');
+    }
+
+    listarCarrito();
 }
 
 function limpiarHTML(){
