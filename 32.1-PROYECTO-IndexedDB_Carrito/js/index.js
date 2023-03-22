@@ -2,6 +2,8 @@ let DB;
 let objCurso;
 const listaCursos = document.querySelector('#lista-cursos');
 const contenedorCarrito = document.querySelector('#lista-carrito tbody');
+const carrito = document.querySelector('#carrito');
+
 
 
 inicializarEventListeners();
@@ -9,6 +11,7 @@ function inicializarEventListeners(){
 
     document.addEventListener('DOMContentLoaded', crearDB);
     listaCursos.addEventListener('click', seleccionarCurso);
+    carrito.addEventListener('click', eliminarCurso);
 }
 
 function crearDB(){
@@ -169,6 +172,27 @@ function listarCarrito(){
             </tr>`;
 
             cursor.continue();
+        }
+    }
+}
+
+function eliminarCurso(e){
+
+    if( e.target.classList.contains('borrar-curso')){
+
+        const idCurso = Number(e.target.dataset.id);
+       
+        const transaction = DB.transaction(['cursos'], 'readwrite');
+        const objectStore = transaction.objectStore('cursos');
+        objectStore.delete(idCurso);
+
+        transaction.oncomplete = () => {
+
+            listarCarrito();
+        }
+        transaction.onerror = () => {
+
+            console.log('Hubo un error');
         }
     }
 }
