@@ -25,6 +25,19 @@ function ejecutarSpeechAPI(){
     recognition.start();
 
     // 2.- Comenzar a escuchar
+    /* 
+        onstart es un evento que se dispara cuando el reconocimiento de voz 
+        comienza. Cuando se establece la función recognition.onstart, 
+        se está configurando el manejador de eventos para el evento onstart, 
+        lo que significa que la función se ejecutará cuando se produzca ese 
+        evento. Sí el evento onstart ya está definido y se establece una 
+        nueva función para él, la nueva función simplemente se agregará como 
+        un segundo manejador de eventos y no reemplazará la función original. 
+        Para sobrescribir la función original, se tendría que usar el método 
+        recognition.removeEventListener('start', oldFunction) antes de 
+        establecer la nueva función.
+    
+    */
     recognition.onstart = function(){
 
         salida.classList.add('mostrar');
