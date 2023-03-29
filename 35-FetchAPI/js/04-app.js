@@ -16,15 +16,24 @@ function imprimirJSONHTML(datos){
     const contenido = document.querySelector('.contenido');
 
     let html = '';
+    let i = 0;
 
     datos.forEach( perfil => {
         
-        const {author, post_url} = perfil;
+        if(i <= 10 ){
 
-        html += `
-            <p> Autor: ${author} </p>
-            <a href="${post_url}" target="_blank"> Ver Imagen </a>
-        `;
+            const {author, post_url, filename} = perfil;
+    
+            html += `
+                <p> Autor: ${author} </p>
+                <a href="${post_url}" target="_blank"> Ver Imagen </a>
+                <img src= "${filename}" />
+            `;
+
+            i++;
+        }
+
+
     });
 
     contenido.innerHTML = html;
