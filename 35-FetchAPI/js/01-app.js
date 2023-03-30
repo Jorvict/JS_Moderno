@@ -16,14 +16,14 @@ function obtenerDatos(){
     /* 
         fetch funciona con Promises, sin embargo no es necesario
         escribir el resolve ni el reject ya que si el promise del
-        fetch se cumple automáticamente podrás ingresar al .then
+        fetch se cumple, automáticamente podrás ingresar al .then
         del resolve, caso contrario podrás ingresar al .catch del
         reject
     */
 
     /* 
         sí expandimos el proto de la respuesta, podremos 
-        visualizar diversos prototips, de los cuales, de momento
+        visualizar diversos prototipos, de los cuales, de momento
         los más importantes son .json y .text debido a que estos
         nos permitiran leer la data extraída
     */
