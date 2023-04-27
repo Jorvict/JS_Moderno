@@ -7,9 +7,16 @@ function iniciarApp(){
     // En este caso si funciona el evento porque el Select ya existe en el index.html
     // a diferencia de casos anteriores donde el Select se generó con scripting (al vuelo)
     // para esos casos se utilizan los event handler, es decir el .onclick
-    selectCategorias.addEventListener('change', seleccionarCategoria);
+    if(selectCategorias){
+        selectCategorias.addEventListener('change', seleccionarCategoria);
+        obtenerCategorias();
+    }
 
-    obtenerCategorias();
+    const favoritosDiv = document.querySelector('.favoritos');
+    if( favoritosDiv ){
+        obtenerFavoritos();
+    }
+
 
     function obtenerCategorias(){
 
@@ -68,15 +75,15 @@ function iniciarApp(){
 
             const recetaImagen = document.createElement('IMG');
             recetaImagen.classList.add('card-img-top');
-            recetaImagen.alt = `Imagen de la receta ${strMeal}`;
-            recetaImagen.src = strMealThumb;
+            recetaImagen.alt = `Imagen de la receta ${strMeal ?? receta.titulo}`;
+            recetaImagen.src = strMealThumb ?? receta.img;
 
             const recetaCardBody = document.createElement('DIV');
             recetaCardBody.classList.add('card-body');
 
             const recetaHeading = document.createElement('H3');
             recetaHeading.classList.add('card-title', 'mb-3');
-            recetaHeading.textContent = strMeal;
+            recetaHeading.textContent = strMeal ?? receta.titulo;
 
             const recetaButton = document.createElement('BUTTON');
             recetaButton.classList.add('btn', 'btn-danger', 'w-100');
@@ -84,7 +91,7 @@ function iniciarApp(){
             // recetaButton.dataset.bsTarget = "#modal";
             // recetaButton.dataset.bsToggle = "modal"; // Toogle manda a llamar las funciones de JS de Bootstrap
             recetaButton.onclick = function(){
-                seleccionarReceta(idMeal);
+                seleccionarReceta(idMeal ?? receta.id);
             }
 
             // Inyectar en el código HTML
@@ -239,6 +246,21 @@ function iniciarApp(){
         const toast = new bootstrap.Toast(toastDiv);
 
         toast.show();
+    }
+
+    function obtenerFavoritos(){
+
+        const favoritos = JSON.parse(localStorage.getItem('favoritos')) ?? [];
+        if(favoritos.length){
+
+            mostrarRecetas(favoritos);
+            return;
+        }
+
+        const noFavoritos = document.createElement('P');
+        noFavoritos.textContent = 'No hay favoritos aún';
+        noFavoritos.classList.add('fs-4', 'text-center', 'font-bold', 'mt-5');
+        resultado.appendChild(noFavoritos);
     }
 
     function limpiarHTML(selector){
