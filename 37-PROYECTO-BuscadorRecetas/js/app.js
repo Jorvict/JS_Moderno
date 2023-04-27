@@ -126,10 +126,7 @@ function iniciarApp(){
         puede ser bastante inseguro*/
         modalBody.innerHTML = `
             <img class="img-fluid" src="${strMealThumb}" alt =" Receta de ${strMeal}" />
-            <h3 class = "my-3"> Instrucciones </h3>
-            <p> ${strInstructions} </p>
             <h3 class = "my-3"> Ingredientes y Cantidades </h3>
-
         `;
 
 
@@ -152,8 +149,16 @@ function iniciarApp(){
                 listGroup.appendChild(ingredienteLi);
             }
         }
-
         modalBody.appendChild(listGroup);
+
+        const instruccionesTitle = document.createElement('H3');
+        instruccionesTitle.classList.add('my-3');
+        instruccionesTitle.textContent = 'Instrucciones';
+        modalBody.appendChild(instruccionesTitle);
+
+        const instruccionesText = document.createElement('P');
+        instruccionesText.textContent = strInstructions;
+        modalBody.appendChild(instruccionesText);
 
         const modalFooter = document.querySelector('.modal-footer');
         limpiarHTML(modalFooter);
@@ -170,6 +175,7 @@ function iniciarApp(){
 
                 eliminarFavorito(idMeal);
                 btnFavorito.textContent = 'Guardar Favorito';
+                mostratToast('Eliminado Correctamente');
                 return;
             }
 
@@ -179,6 +185,7 @@ function iniciarApp(){
                 img: strMealThumb
             });
             btnFavorito.textContent = 'Eliminar Favorito';
+            mostratToast('Agregado Correctamente');
         }
 
         const btnCerrarModal = document.createElement('BUTTON');
@@ -220,6 +227,18 @@ function iniciarApp(){
 
         const favoritos = JSON.parse(localStorage.getItem('favoritos')) ?? [];
         return favoritos.some( favorito => favorito.id === id);
+    }
+
+    function mostratToast(mensaje){
+
+        const toastDiv = document.querySelector('#toast');
+        const toastBody = document.querySelector('.toast-body');
+        toastBody.textContent = mensaje;
+
+        // Le pasamos el elemento donde queremos que se genere el Toast
+        const toast = new bootstrap.Toast(toastDiv);
+
+        toast.show();
     }
 
     function limpiarHTML(selector){
