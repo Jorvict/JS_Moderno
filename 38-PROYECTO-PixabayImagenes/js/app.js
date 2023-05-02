@@ -3,6 +3,7 @@ const formulario = document.querySelector('#formulario');
 
 const registrosPorPagina = 40;
 let totalPaginas;
+let iterador;
 
 window.onload = () => {
     formulario.addEventListener('submit', validarFormulario);
@@ -60,6 +61,32 @@ function buscarImagenes(termino){
         })
 }
 
+// Generador que va a registrar la cantidad de elementos de acuerdo a las páginas
+function *crearPaginador(total){
+    /*
+        Algo a tener en consideración es que para que el generador
+        se ejecute por lo menos una vez hay que activarlo llamando
+        al generador y añadiendo el método .next, esto hará que el
+        generador se ejecute, se detendrá en la próxima instrucción
+        YIELD y retornará el valor que se le esté pasando al yield,
+        al llamar a .next nuevamente proseguirá el recorrido desde
+        el yield en el que se quedó y se detendrá en el siguiente
+        yield retornando su valor, en caso en la función generadora
+        no cuente con ningún yield establecido entonces ejecturará
+        toda la función por completo y retornará un iterador vacío.
+
+        Nota de desarrollador: Por eso es que al usar console.log
+        dentro del bucle y al no tener ningún yield ejecutaba
+        todas las iteraciones solamente teniendo un .next. (Debido
+        a que no había ningún yield que detuviera la ejecución)
+    */
+
+    for(let i = 1; i <= total; i++){
+
+        yield i;
+    }
+}
+
 function imprimirImagenes(imagenes){
     console.log(imagenes);
 
@@ -91,6 +118,15 @@ function imprimirImagenes(imagenes){
             </div>
         `
     });
+
+    // Llamar al generador de páginación (Toma el total de páginas)
+    imprimirPaginador()
+}
+
+function imprimirPaginador(){
+
+    iterador = crearPaginador(totalPaginas);
+    console.log(iterador.next());
 }
 
 function limpiarHTML(selector){
