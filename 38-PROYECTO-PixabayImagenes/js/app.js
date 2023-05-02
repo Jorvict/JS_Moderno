@@ -1,5 +1,6 @@
 const resultado = document.querySelector('#resultado');
 const formulario = document.querySelector('#formulario');
+const paginacionDiv = document.querySelector('#paginacion');
 
 const registrosPorPagina = 40;
 let totalPaginas;
@@ -119,14 +120,32 @@ function imprimirImagenes(imagenes){
         `
     });
 
-    // Llamar al generador de páginación (Toma el total de páginas)
+    // Limpiar paginador previo
+    limpiarHTML(paginacionDiv);
+
+    // Llama e imprime el generador de páginación (Toma el total de páginas)
     imprimirPaginador()
 }
 
 function imprimirPaginador(){
 
     iterador = crearPaginador(totalPaginas);
-    console.log(iterador.next());
+
+    while(true){
+
+        const { value, done } = iterador.next();
+        if(done) return;
+
+        // Caso contrario, genera un botón por cada elemento en el generador
+        const boton = document.createElement('A');
+        boton.href = '#';
+        boton.dataset.pagina = value;
+        boton.textContent = value;
+        boton.classList.add('siguiente', 'bg-yellow-400', 'px-4', 'py-1', 'mr-2', 'font-bold', 'mb-3', 'uppercase', 'rounded');
+
+        paginacionDiv.appendChild(boton);
+    }
+    console.log(iterador.next().done);
 }
 
 function limpiarHTML(selector){
