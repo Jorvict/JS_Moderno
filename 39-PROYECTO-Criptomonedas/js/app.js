@@ -1,6 +1,7 @@
 const criptomonedasSelect = document.querySelector('#criptomonedas');
 const monedaSelect = document.querySelector('#moneda');
 const formulario = document.querySelector('#formulario');
+const resultado = document.querySelector('#resultado');
 
 const objBusqueda = {
     moneda: '',
@@ -48,7 +49,7 @@ function selectCriptomonedas(criptomonedas){
 function leerValor(e){
 
     objBusqueda[e.target.name] = e.target.value;
-    console.log(objBusqueda);
+    // console.log(objBusqueda);
 }
 
 function submitFormulario(e){
@@ -65,7 +66,7 @@ function submitFormulario(e){
     }
 
     // Consultar la API con los resultados
-    
+    consultarAPI();
 
 }
 
@@ -87,5 +88,56 @@ function mostrarAlerta(msg){
         setTimeout(() => {
             divMensaje.remove();
         }, 3000);
+    }
+}
+
+function consultarAPI(){
+
+    const { moneda, criptomoneda } = objBusqueda;
+
+    const url = `https://min-api.cryptocompare.com/data/pricemultifull?fsyms=${criptomoneda}&tsyms=${moneda}`;
+
+    fetch(url)
+        .then( respuesta => respuesta.json())
+        .then( cotizacion => {
+            imprimirCotizacionHTML(cotizacion.DISPLAY[criptomoneda][moneda]);
+        })
+}
+
+function imprimirCotizacionHTML(cotizacion){
+
+    limpiarHTML(resultado);
+
+    const { PRICE, HIGHDAY, LOWDAY, CHANGEPCT24HOUR, LASTUPDATE } = cotizacion;
+
+    const precio = document.createElement('P');
+    precio.classList.add('precio');
+    precio.innerHTML = `El precio actual es: <span> ${PRICE} </span>`;
+
+    const precioAlto = document.createElement('P');
+    precioAlto.innerHTML = `<p>Precio más alto del día: <span>${HIGHDAY}</span>`;
+    
+    const precioBajo = document.createElement('P');
+    precioBajo.innerHTML = `<p>Precio más bajo del día: <span>${LOWDAY}</span>`;
+
+    const ultimasHoras = document.createElement('P');
+    ultimasHoras.innerHTML = `<p>Variacion últimas 24 horas: <span>${CHANGEPCT24HOUR}%</span>`;
+    
+    const ultimaActualizacion = document.createElement('P');
+    ultimaActualizacion.innerHTML = `<p>Última actualización: <span>${LASTUPDATE}</span>`;
+
+
+    resultado.appendChild(precio);
+    resultado.appendChild(precioAlto);
+    resultado.appendChild(precioBajo);
+    resultado.appendChild(ultimasHoras);
+    resultado.appendChild(ultimaActualizacion);
+}
+
+function limpiarHTML(selector){
+
+    while(selector.firstChild){
+
+        selector.removeChild(selector.firstChild);
     }
 }
