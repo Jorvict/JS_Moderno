@@ -64,11 +64,28 @@ function submitFormulario(e){
         return;
     }
 
-
+    // Consultar la API con los resultados
+    
 
 }
 
 function mostrarAlerta(msg){
 
-    console.log(msg);
+    const existeError = document.querySelector('.error');
+
+    // Sí no existe error en pantalla, se ejecuta el código de impresión
+    if(!existeError){
+
+        const divMensaje = document.createElement('DIV');
+        divMensaje.classList.add('error');
+    
+        // Mensaje de error
+        divMensaje.textContent = msg;
+    
+        formulario.appendChild(divMensaje);
+    
+        setTimeout(() => {
+            divMensaje.remove();
+        }, 3000);
+    }
 }
