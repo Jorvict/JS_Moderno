@@ -115,7 +115,7 @@ function mostrarPlatillos(platillos){
 
     platillos.forEach( platillo => {
 
-        const { nombre, precio, categoria } = platillo
+        const { nombre, precio, categoria, id } = platillo
 
         const row = document.createElement('DIV');
         row.classList.add('row', 'py-3', 'border-top');
@@ -132,17 +132,31 @@ function mostrarPlatillos(platillos){
         categoriaDiv.classList.add('col-md-3'); 
         categoriaDiv.textContent = categorias[categoria];
 
+        const inputCantidad = document.createElement('INPUT');
+        inputCantidad.type = 'number';
+        inputCantidad.min = 0;
+        inputCantidad.value = 0;
+        inputCantidad.id = `producto-${id}`;
+        inputCantidad.classList.add('form-control');
+        
+        const agregarDiv = document.createElement('DIV');
+        agregarDiv.classList.add('col-md-2');
+        agregarDiv.appendChild(inputCantidad);
+
         row.appendChild(nombreDiv);
         row.appendChild(precioDiv);
         row.appendChild(categoriaDiv);
+        row.appendChild(agregarDiv);
 
 
         contenido.appendChild(row);
 
         /* 
-            NOTA: md-col-x se utiliza para estructurar según el grid de 
+            NOTA: col-md-x se utiliza para estructurar según el grid de 
             bootstrap, los col en total deben sumar 12 que se refiere al 100%
-            del tamaño total del elemento padre
+            del tamaño total del elemento padre, tener en cuenta que el
+            col-md-x se aplica a los DIVs y no a otros elementos como por
+            ejemplo aplicarlo directamente a un input
         */
     })
 }
