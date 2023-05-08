@@ -66,7 +66,7 @@ function guardarCliente(){
         del array de pedido.     
     */ 
     cliente = { ...cliente, mesa, hora };
-    
+
 
     // Ocultar Modal
     const modalformulario = document.querySelector('#formulario');
@@ -76,6 +76,9 @@ function guardarCliente(){
 
     // Mostrar las secciones
     mostrarSecciones();
+
+    // Obtener Platillos de la API de JSON-Server
+    obtenerPlatillos();
 }
 
 function mostrarSecciones(){
@@ -88,4 +91,15 @@ function mostrarSecciones(){
         // sino que se escribe la clase directamente (sin el . inicial) 
         seccion.classList.remove('d-none'); 
     });
+}
+
+function obtenerPlatillos(){
+
+    const url = 'http://localhost:4000/platillos';
+
+    fetch(url)
+        .then( respuesta => respuesta.json() )
+        .then( resultado => console.log(resultado) )
+        .catch( error => console.log(error))
+
 }
