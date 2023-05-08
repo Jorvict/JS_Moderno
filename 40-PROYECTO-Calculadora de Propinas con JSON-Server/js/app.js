@@ -99,7 +99,34 @@ function obtenerPlatillos(){
 
     fetch(url)
         .then( respuesta => respuesta.json() )
-        .then( resultado => console.log(resultado) )
+        .then( resultado => mostrarPlatillos(resultado) )
         .catch( error => console.log(error))
+}
 
+function mostrarPlatillos(platillos){
+
+    const contenido = document.querySelector('#platillos .contenido');
+
+    platillos.forEach( platillo => {
+
+        const { nombre } = platillo
+
+        const row = document.createElement('DIV');
+        row.classList.add('row');
+
+        const nombreDiv = document.createElement('DIV');
+        nombreDiv.classList.add('col-md-4'); 
+        nombreDiv.textContent = nombre;
+
+
+        row.appendChild(nombreDiv);
+
+
+        contenido.appendChild(row);
+
+        /* 
+            NOTA: md-col-x se utiliza para estructurar según el grid de 
+            bootstrap, los col en total deben sumar 12 que se refiere al 100% 
+        */
+    })
 }
