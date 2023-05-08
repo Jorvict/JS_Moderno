@@ -66,11 +66,26 @@ function guardarCliente(){
         del array de pedido.     
     */ 
     cliente = { ...cliente, mesa, hora };
-    console.log(cliente)
-
+    
 
     // Ocultar Modal
     const modalformulario = document.querySelector('#formulario');
     const modalBootstrap = bootstrap.Modal.getInstance(modalformulario);
     modalBootstrap.hide();
+
+
+    // Mostrar las secciones
+    mostrarSecciones();
+}
+
+function mostrarSecciones(){
+
+    const seccionesOcultas = document.querySelectorAll('.d-none');
+
+    seccionesOcultas.forEach(seccion => {
+        
+        // Recordar que al usar el classList.remove no se escribe como selector
+        // sino que se escribe la clase directamente (sin el . inicial) 
+        seccion.classList.remove('d-none'); 
+    });
 }
