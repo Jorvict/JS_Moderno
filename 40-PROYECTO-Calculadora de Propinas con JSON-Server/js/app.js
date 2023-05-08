@@ -53,5 +53,24 @@ function guardarCliente(){
         return;
     }
 
-    
+    // Asignar datos del formulario a cliente
+    /*
+        El objeto de cliente va a quedar vacío sí asignamos la copia 
+        del objeto original de último puesto que se van a sobreescribir
+        los valores de mesa y hora obtenidos de los inputs con los valores
+        del objeto copiado, para evitar esto se sugiere que el objeto a copiar
+        vaya de primero en éste caso, así se traera la copia del objeto vacío
+        y se sobreescribiran los values vacíon con el valor de los inputs.
+        Sí no obtenemos la copia del objeto original lo que va a suceder es
+        que el nuevo objeto de cliente se va a sobreescribir sin la referencia
+        del array de pedido.     
+    */ 
+    cliente = { ...cliente, mesa, hora };
+    console.log(cliente)
+
+
+    // Ocultar Modal
+    const modalformulario = document.querySelector('#formulario');
+    const modalBootstrap = bootstrap.Modal.getInstance(modalformulario);
+    modalBootstrap.hide();
 }
