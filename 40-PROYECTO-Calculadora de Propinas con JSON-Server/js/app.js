@@ -8,7 +8,7 @@
     json-server --watch db.json --port 4000 utilizar en la
     terminal con la ruta donde se encuentra el archivo para
     ejecutar el servidor json con la DB seleccionada en el
-    peurto indicado, si se utiliza una ruta incorrecta
+    puerto indicado, si se utiliza una ruta incorrecta
     json-server puede generar una db distinta
 */ 
 
@@ -62,11 +62,11 @@ function guardarCliente(){
     // Asignar datos del formulario a cliente
     /*
         El objeto de cliente va a quedar vacío sí asignamos la copia 
-        del objeto original de último puesto que se van a sobreescribir
+        del objeto original de último puesto, ya que se van a sobreescribir
         los valores de mesa y hora obtenidos de los inputs con los valores
         del objeto copiado, para evitar esto se sugiere que el objeto a copiar
         vaya de primero en éste caso, así se traera la copia del objeto vacío
-        y se sobreescribiran los values vacíon con el valor de los inputs.
+        y se sobreescribiran los values vacíos con el valor de los inputs.
         Sí no obtenemos la copia del objeto original lo que va a suceder es
         que el nuevo objeto de cliente se va a sobreescribir sin la referencia
         del array de pedido.     
@@ -139,6 +139,12 @@ function mostrarPlatillos(platillos){
         inputCantidad.id = `producto-${id}`;
         inputCantidad.classList.add('form-control');
         
+        // Función que detecta la cantidad y el platillo que se está agregando
+        inputCantidad.onchange = () =>{
+            const cantidad = parseInt( inputCantidad.value );
+            agregarPlatillo({...platillo, cantidad});
+        }
+        
         const agregarDiv = document.createElement('DIV');
         agregarDiv.classList.add('col-md-2');
         agregarDiv.appendChild(inputCantidad);
@@ -159,4 +165,9 @@ function mostrarPlatillos(platillos){
             ejemplo aplicarlo directamente a un input
         */
     })
+}
+
+function agregarPlatillo(producto){
+
+    console.log( producto)
 }
