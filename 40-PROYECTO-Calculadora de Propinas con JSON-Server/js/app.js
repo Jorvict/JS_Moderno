@@ -169,12 +169,31 @@ function mostrarPlatillos(platillos){
 
 function agregarPlatillo(producto){
 
-    // Extraer el pedido actual
+    // Extraer el pedido actual en una variable temporal al hacer destructuring
     let { pedido } = cliente;
 
     // Revisar que la cantidad sea mayor a 0
     if(producto.cantidad > 0){
 
+        // Comprueba sí el elemento clickeado ya existe en el array
+        if(pedido.some( articulo => articulo.id === producto.id )){
+
+            // El artículo ya existe, se procede a actualizar la cantidad
+            const pedidoActualizado = pedido.map( articulo => {
+                
+                if( articulo.id === producto.id ){
+                    articulo.cantidad = producto.cantidad;
+                }
+                return articulo;
+            });
+
+            // Se asigna el nuevo array con la cantidad actualizada al
+            // objeto global de cliente.pedido
+            cliente.pedido = [...pedidoActualizado];
+        
+        } else {
+
+        // El artículo no existe, lo agregamos al array del pedido
         /*
             Lo que se realiza a continuación es que el array de pedido
             que es una propiedad del objeto global cliente se sobreescribe 
@@ -185,7 +204,10 @@ function agregarPlatillo(producto){
             variable pedido obtenida del destructuring no va a afectar al
             objeto global pedido que es propieda de cliente.
         */
-        cliente.pedido = [...pedido, producto];
+            cliente.pedido = [...pedido, producto];
+        }
+
+
     } else{
         console.log('NO es mayor a 0');
     }
