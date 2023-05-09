@@ -258,12 +258,59 @@ function actualizarResumen(){
     heading.classList.add('my-4', 'text-center');
 
     // Iterar sobre el array de pedidos
+    const lista = document.createElement('UL');
+    lista.classList.add('list-group');
 
+    const { pedido } = cliente;
+    pedido.forEach( articulo => {
+
+        const { nombre, cantidad, precio, id } = articulo;
+
+        const listItem = document.createElement('LI');
+        listItem.classList.add('list-group-item');
+       
+        // Nombre del artículo
+        const nombreEl = document.createElement('H4');
+        nombreEl.classList.add('my-4');
+        nombreEl.textContent = nombre;
+
+        // Cantidad del artículo
+        const cantidadEl = document.createElement('P');
+        cantidadEl.classList.add('fw-bold');
+        cantidadEl.textContent = 'Cantidad: ';
+
+        const cantidadValor = document.createElement('SPAN');
+        cantidadValor.classList.add('fw-normal');
+        cantidadValor.textContent = cantidad;
+
+        // Precio del artículo
+        const precioEl = document.createElement('P');
+        precioEl.classList.add('fw-bold');
+        precioEl.textContent = 'Precio: ';
+
+        const precioValor = document.createElement('SPAN');
+        precioValor.classList.add('fw-normal');
+        precioValor.textContent = `$${precio}`;
+
+
+        // ====== Agregar valores a sus contenedores ======
+        cantidadEl.appendChild(cantidadValor);
+        precioEl.appendChild(precioValor);
+
+        // Agregar Elementos al LI
+        listItem.appendChild(nombreEl);
+        listItem.appendChild(cantidadEl);
+        listItem.appendChild(precioEl);
+
+        // Agregar LI a la lista principal
+        lista.appendChild(listItem);
+    });
 
     // Renderizar en el contenido
     resumen.appendChild(mesa);
     resumen.appendChild(hora);
     resumen.appendChild(heading);
+    resumen.appendChild(lista);
 
     contenido.appendChild(resumen);
 }
