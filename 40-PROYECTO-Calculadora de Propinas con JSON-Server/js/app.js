@@ -180,7 +180,7 @@ function agregarPlatillo(producto){
 
             // El artículo ya existe, se procede a actualizar la cantidad
             const pedidoActualizado = pedido.map( articulo => {
-                
+
                 if( articulo.id === producto.id ){
                     articulo.cantidad = producto.cantidad;
                 }
@@ -207,10 +207,13 @@ function agregarPlatillo(producto){
             cliente.pedido = [...pedido, producto];
         }
 
-
+        
     } else{
-        console.log('NO es mayor a 0');
+        
+        // Eliminar elementos cuando la cantidad es 0
+        // El filter retornará aquellos que son diferentes al que estamos eliminando
+        const resultado = pedido.filter( articulo => articulo.id !== producto.id );
+        cliente.pedido = [...resultado];
     }
 
-    console.log(cliente.pedido);
 }
