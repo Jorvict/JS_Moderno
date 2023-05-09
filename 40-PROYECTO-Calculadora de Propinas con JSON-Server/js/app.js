@@ -169,5 +169,26 @@ function mostrarPlatillos(platillos){
 
 function agregarPlatillo(producto){
 
-    console.log( producto)
+    // Extraer el pedido actual
+    let { pedido } = cliente;
+
+    // Revisar que la cantidad sea mayor a 0
+    if(producto.cantidad > 0){
+
+        /*
+            Lo que se realiza a continuación es que el array de pedido
+            que es una propiedad del objeto global cliente se sobreescribe 
+            con una copia extraida al momento de declarar el destructuring 
+            y se le adiciona el producto sobre el cual se hizo click en la
+            interfaz de la página, es decir el platillo/item con el que
+            se está interactuando. Cabe mencionar que sí modificamos la
+            variable pedido obtenida del destructuring no va a afectar al
+            objeto global pedido que es propieda de cliente.
+        */
+        cliente.pedido = [...pedido, producto];
+    } else{
+        console.log('NO es mayor a 0');
+    }
+
+    console.log(cliente.pedido);
 }
