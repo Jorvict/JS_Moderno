@@ -3,7 +3,7 @@ const paises = [];
 
 
 /* 
-    Tiene una sola línea porque es una arrow function expression por lo cual el
+    Tiene una sola línea porque es una ARROW FUNCTION EXPRESSION por lo cual el
     return es implicito, en caso de que se deseara trasladar a function declaration
     se debe agregar la sintaxis de function y al instanciar el Promise dentro de las
     llaves se debe colocar un "return" al inicio 
