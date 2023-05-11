@@ -62,6 +62,7 @@ async function buscarImagenes() {
     //         mostrarImagenes(resultado.hits);
     //     })
 
+    // En éste caso se requieren 2 awaits ya que cada uno depende del anterior
     try {
         const respuesta = await fetch(url);
         const resultado = await respuesta.json();
