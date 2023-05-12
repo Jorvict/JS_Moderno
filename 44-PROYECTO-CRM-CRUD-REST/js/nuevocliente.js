@@ -1,4 +1,5 @@
 import { mostrarAlerta } from './funciones.js';
+import { nuevoCliente } from './API.js';
 
 ( function(){
 
@@ -29,8 +30,7 @@ import { mostrarAlerta } from './funciones.js';
             return;
         }
 
-        console.log('Si se pasó la validación');
-        console.log(cliente);
+        nuevoCliente(cliente);
     }
 
     function validarCamposVacios(objValidado){
