@@ -1,13 +1,6 @@
 {
   "clientes": [
     {
-      "id": 2,
-      "nombre": "Enrique",
-      "email": "enrique@hola.com",
-      "telefono": "974714471",
-      "empresa": "Cisco"
-    },
-    {
       "id": 20,
       "nombre": "Jorvict",
       "email": "correo@hola.com",
