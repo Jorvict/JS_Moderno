@@ -72,3 +72,26 @@ export const obtenerCliente = async id => {
         console.log(error);
     }
 }
+
+// Actualizar un registro
+export const actualizarCliente = async cliente => {
+
+    try {
+        await fetch(`${url}/${cliente.id}`,{
+            method: 'PUT',
+            body: JSON.stringify(cliente),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        window.location.href = 'index.html';
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+/**
+ * NOTA: Hay 2 métodos para actualizar registros mediante JSON-SERVER, que son
+ * PATCH y PUT, los dos hacen lo mismo sin embargo PUT es más popular debido
+ * a que PUT reescribe todo el objeto completo mientras que PATCH es parcial
+ */
