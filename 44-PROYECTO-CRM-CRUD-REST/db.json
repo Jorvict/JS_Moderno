@@ -2,11 +2,17 @@
   "clientes": [
     {
       "id": 2,
-      "nombre": "Enrique"
+      "nombre": "Enrique",
+      "email": "enrique@hola.com",
+      "telefono": "974714471",
+      "empresa": "Cisco"
     },
     {
       "id": 20,
-      "nombre": "Jorvict"
+      "nombre": "Jorvict",
+      "email": "correo@hola.com",
+      "telefono": "977415471",
+      "empresa": "Optical"
     },
     {
       "nombre": "Jorvict Enrique",
@@ -14,6 +20,13 @@
       "telefono": "977705821",
       "empresa": "Fortel",
       "id": 21
+    },
+    {
+      "nombre": "Yoel",
+      "email": "yoel@correo.com",
+      "telefono": "984154741",
+      "empresa": "Yoelin",
+      "id": 22
     }
   ]
 }
