@@ -50,7 +50,7 @@ import { nuevoCliente } from './API.js';
             Sí no negaramos la expresión
             Object.values(objValidado).every(input => input !== '');
             El resultado será false si alguno de los campos está vacío, 
-            ya que la expresión evalúa si el valor de input es diferente a 
+            ya que la expresión evalúa si el valor de los inputs es diferente a 
             una cadena vacía. Por lo tanto, si todos los campos están llenos, 
             el resultado será true ya que se confirma que TODOS LOS ELEMENTOS 
             son DIFERENTES de un string vacío.
@@ -58,11 +58,11 @@ import { nuevoCliente } from './API.js';
         /*
             Al negar la expresión 
             !Object.values(objValidado).every(input => input !== ''); 
-            Significa que si todos los valores del objeto son diferentes 
-            a la cadena vacía, el resultado será false, lo que equivale a decir 
-            que al menos uno de los valores no está vacío, o sea que todos los
-            campos están llenos y no hay ninguno vacío. En cambio, si al menos 
-            un valor es la cadena vacía, entonces el resultado será true. 
+            Significa que si todos los valores del array son diferentes 
+            a la cadena vacía (o sea que tienen información), el resultado será false, 
+            ya que todos los campos están llenos y no hay ninguno vacío. 
+            En cambio, si al menos un valor es la cadena vacía, entonces el resultado 
+            será true. 
             Es importante destacar que esta negación no es lo mismo que la 
             afirmación original (sin negaciones), ya que una sola propiedad vacía 
             sería suficiente para que el objeto no cumpla con la condición.
@@ -92,6 +92,7 @@ import { nuevoCliente } from './API.js';
         */
 
 
+        console.log( !Object.values(objValidado).every(input => input !== '') );
         return !Object.values(objValidado).every(input => input !== '');
     }
 
