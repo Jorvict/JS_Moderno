@@ -3,7 +3,8 @@
  * La mayoría de array methods son buenos candidatos para ser utilizados
  *  en la programación funcional, .forEach y .map son unos de ellos, tener
  *  en cuenta que .map lo que realizará es crear un nuevo arreglo utilizando
- *  los valores que sean retornados haciendo uso del returnm mientras
+ *  los valores que sean retornados haciendo uso del return, esto 
+ *  significa que se puede hacer uso de funciones de transformación mientras
  *  que forEach lo que hará es simplemente iterar sobre el arreglo.
  * */ 
 
