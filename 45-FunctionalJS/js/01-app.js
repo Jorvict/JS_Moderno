@@ -17,7 +17,7 @@
  * Existen 3 conceptos claves de la programación funcional:
  * 
  * ~ Inmutabilidad: Los datos no deben modificarse (usar const casi siempre)
- *      por ejemplo el siguiente código:
+ *      por ejemplo el siguiente código es algo que se debe evitar:
  * 
  *      let cliente = "Jorvict";
  *      cliente = "Enrique";
