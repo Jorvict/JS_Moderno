@@ -1,7 +1,7 @@
 // Separar los datos de funciones
 // Higher order functions son funciones que toman o retornan
 // una función como argumento, la mayoría de array methods
-// son higers order functions
+// son highers order functions
 
 const carrito = [
     { nombre: 'Monitor 20 Pulgadas', precio: 500},

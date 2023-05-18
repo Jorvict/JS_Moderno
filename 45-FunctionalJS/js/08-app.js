@@ -33,3 +33,50 @@ const obtenerCliente = () =>{
 
 const cliente2 = obtenerCliente();
 cliente2();
+
+// Otro ejemplo de closures, funciona similar a las Clases
+const coche = ( () => {
+    let _marca, _velocidad = 0, _puertas;
+
+    function setMarca(marca) {
+        _marca = marca;
+        return _marca;
+    }
+
+    function getMarca(){
+        return _marca;
+    }
+
+    function acelerar() {
+        _velocidad++;
+    }
+
+    function frenar() {
+        _velocidad--;
+    }
+
+    function getVelocidad() {
+        return _velocidad
+    }
+
+    // Para poder utilizar los métodos fuera del closure realizar un return
+    // Se recomienda que no se retornen variables sino métodos o funciones
+    // que realicen el get de esa variable
+    return{
+        setMarca,
+        getMarca,
+        acelerar,
+        frenar,
+        getVelocidad
+    }
+
+}) ();
+
+coche.setMarca('Ferrari');
+coche.acelerar();
+coche.acelerar();
+coche.acelerar();
+coche.acelerar();
+
+
+console.log("Marca:", coche.getMarca(), "Velocidad:", coche.getVelocidad());
