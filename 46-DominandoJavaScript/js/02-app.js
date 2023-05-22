@@ -1,6 +1,6 @@
 // Hoisting
 /**
- * Se refiere a como funcionan los contectos de ejecución en Javascript
+ * Se refiere a como funcionan los contextos de ejecución en Javascript
  * Existen 2 fases:
  *  ~ Una fase de creación: Se crean todas las variables y se registran,
  *      al igual que las funciones.
@@ -40,7 +40,7 @@ const obtenerCliente2 = (nombre) => {
     Sin embargo la función obtenerCliente2 muestra error debido a que al
     momento de la segunda vuelta, se ha definido la función y la
     variable pero no se ha asignado la funcion a la variable obtenerCliente2 
-    para el momentoen el que se invocado, es decir, es como si el flujo de 
+    para el momento en el que se ha invocado, es decir, es como si el flujo de 
     depuración fuera de la siguiente forma:
 
     const obtenerCliente2;
@@ -49,7 +49,7 @@ const obtenerCliente2 = (nombre) => {
                                     (Antes de poder asignar la función)
 
     obtenerCliente2 = function(){xxxxxx} 
-    (Recién en este punto se aisnaría la función a la variable, luego
+    (Recién en este punto se asignaría la función a la variable, luego
         de que ya se detuvo el flujo de ejecución)
 
     Devolverá error debido a que no se le ha definido y asignado el
@@ -60,7 +60,7 @@ const obtenerCliente2 = (nombre) => {
     definida, entonces se ejecutará con normalidad.
 
 En el caso de Function Declaration, la función puede ser llamada antes
-de definirla sin ninún inconveniente.
+de definirla sin ningún inconveniente.
 Las Function Expression son regularmente utilizadas en React 
 
 Considerar esta información ya que una pregunta de entrevista podría
