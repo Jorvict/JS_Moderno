@@ -6,10 +6,10 @@
   * o en un bloque de código
   */
 
- const cliente = 'Jorvict';
+const cliente = 'Jorvict';
  
  
- function mostrarCliente(){
+function mostrarCliente(){
      
      // Esta variable de cliente solo existirá dentro de este bloque de código
      /**
@@ -27,6 +27,8 @@
     console.log(cliente);
 }
 
+console.log(cliente);
+
 mostrarCliente();
 
 // Otro ejemplo
@@ -40,6 +42,15 @@ function clienteLogueado(){
     console.log(cliente);
 
     if(login){
+
+        // console.log(cliente); Se muestra un error debido al Hoisting
+        /**
+         * JavaScript trata de buscar la variable en su ámbito más cercano, 
+         * que es el bloque condicional (el IF), pero encuentra una 
+         * declaración de variable con el mismo nombre antes de la 
+         * inicialización, por lo cual dará el error "Cannot access 'cliente' 
+         * before initialization at clienteLogueado".
+        */
 
         // Scope por bloque
         // console.log(cliente); Si lo ponemos antes de definir la variable

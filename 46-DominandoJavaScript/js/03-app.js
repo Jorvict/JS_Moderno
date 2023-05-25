@@ -1,6 +1,6 @@
 // Coerción
 /**
- * Es la conversión automática implicita o manual explícita de valores dede
+ * Es la conversión automática implicita o manual explícita de valores de
  *  un tipo de dato dado a otro tipo de dato
  */
 
@@ -18,3 +18,5 @@ console.log(numero1.toString());
 const pedido = [1, 2, 3, 4];
 console.log(pedido.toString());
 console.log(JSON.stringify(pedido));
+
+// Es la conversión implícita o explícita de un tipo de dato hacia otro 
