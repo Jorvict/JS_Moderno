@@ -25,4 +25,20 @@
  *  ~ window (utiliza self)
  *  ~ document (se utiliza caches)
  *  ~ localStorage (se utiliza fetch)
+ * 
+ * Para auditar rendimiento desde Chrome, ingresar a inspector de
+ * elementos, luego nos vamos a la pestaña "Lighthouse" y desde aquí
+ * podremos realizar una auditoria.
+ * 
+ * Para realizar una PWA es indispensable tener un archivo manifest.json
  */
+
+if('serviceWorker' in navigator){
+
+    navigator.serviceWorker.register('./sw.js')
+        .then( registrado => console.log('Se instaló correctamente... ', registrado))
+        .catch( error => console.log('Falló la instalación...', error) );
+        
+} else {
+    console.log('Service Workers no soportados')
+}
