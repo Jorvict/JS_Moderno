@@ -31,6 +31,11 @@
  * podremos realizar una auditoria.
  * 
  * Para realizar una PWA es indispensable tener un archivo manifest.json
+ * en la cual se especifique el start_url, establecer que responda un 200
+ * en caso estar offline, utizar HTTPS (para prueba en local es válido usar
+ * localhost) pero para ser considerada como una PWA como tal debe estar
+ * desplegada en un dominio con HTTPS, también se debe contar con un icono
+ * apple-touch
  */
 
 if('serviceWorker' in navigator){
