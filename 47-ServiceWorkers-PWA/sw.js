@@ -9,6 +9,16 @@
  *  
 */
 
+const nombreCache = 'apv-v1';
+const archivos = [
+    './',
+    './index.html',
+    './css/bootstrap.css',
+    './css/styles.css',
+    './js/app.js',
+    './js/apv.js'
+];
+
 // Cuando se instala el service Worker
 /**
  * Solo se ejecuta una vez, cada vez que se instala el SW
@@ -17,8 +27,17 @@
 self.addEventListener('install', e =>{
     console.log('Instalado el Service Worker');
 
-    console.log(e);
-})
+    // Esperar hasta que se descarguen todos los archivos de Caché
+    e.waitUntil(
+        caches.open(nombreCache)
+            // Promise para ir cacheando los archivos
+            .then( cache => {
+                console.log('cacheando')
+                cache.addAll(archivos)  // Agregar arreglo archivos al caché
+                                        // Sí fuera 1 archivo usar .add
+            })
+    )
+});
 
 // Activar el ServiceWorker
 /**
@@ -32,5 +51,5 @@ self.addEventListener('activate', e =>{
 
 // Evento fetch para descargar archivos estáticos
 self.addEventListener('fetch', e =>{
-    console.log('Fetch...', e);
+    // console.log('Fetch...', e);
 })
