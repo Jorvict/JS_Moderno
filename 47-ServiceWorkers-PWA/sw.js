@@ -9,7 +9,7 @@
  *  
 */
 
-const nombreCache = 'apv-v1';
+const nombreCache = 'apv-v6';
 const archivos = [
     './',
     './index.html',
@@ -48,7 +48,17 @@ self.addEventListener('install', e =>{
 self.addEventListener('activate', e =>{
     console.log('Service Worker Activado');
 
-    console.log(e);
+    e.waitUntil(
+        caches.keys()
+            .then( keys => {
+                // console.log(keys);
+
+                return Promise.all(
+                    keys.filter( key => key !== nombreCache)
+                        .map( key => caches.delete(key)) // Borra los demás caches
+                )
+            })
+    )
 });
 
 // Evento fetch para descargar archivos estáticos
@@ -57,22 +67,22 @@ self.addEventListener('fetch', e =>{
 
     e.respondWith(
 
-        (async function(){
+        // (async function(){
 
-            const cachedResponse = await caches.match(e.request)
+        //     const cachedResponse = await caches.match(e.request)
 
-            if(cachedResponse){
-                return cachedResponse;
-            } else {
-                return caches.match('./error.html')
-            }
-            return fetch(e.request);
-        }) ()
+        //     if(cachedResponse){
+        //         return cachedResponse;
+        //     } else {
+        //         return caches.match('./error.html')
+        //     }
+        //     return fetch(e.request);
+        // }) ()
 
 
         // Revisar el tipo de request, en caso sea igual a lo que tenemos
         // en cache, entonces cargamos el cache
-        // caches.match(e.request)
-        //     .then( respuestaCache => (respuestaCache ? respuestaCache : caches.match('./error.html')))
+        caches.match(e.request)
+            .then( respuestaCache => (respuestaCache ? respuestaCache : caches.match('./error.html')))
     );
 })
