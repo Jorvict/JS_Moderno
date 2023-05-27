@@ -16,7 +16,8 @@ const archivos = [
     './css/bootstrap.css',
     './css/styles.css',
     './js/app.js',
-    './js/apv.js'
+    './js/apv.js',
+    './manifest.json'
 ];
 
 // Cuando se instala el service Worker
@@ -52,4 +53,21 @@ self.addEventListener('activate', e =>{
 // Evento fetch para descargar archivos estáticos
 self.addEventListener('fetch', e =>{
     // console.log('Fetch...', e);
+
+    e.respondWith(
+
+        (async function(){
+
+            const cachedResponse = await caches.match(e.request)
+            if(cachedResponse){
+                return cachedResponse;
+            }
+            return fetch(e.request);
+        }) ()
+
+
+        // Revisar el tipo de request, en caso sea igual a lo que tenemos
+        // en cache, entonces cargamos el cache
+            
+    );
 })
