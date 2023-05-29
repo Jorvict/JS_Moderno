@@ -24,3 +24,21 @@
  * debemos conocer o son los básicos para cualquier
  * desarrollador de software.
  */
+
+// Class Pattern
+/**
+ * Básicamente consiste en utilizar classes para la
+ * creación de los objetos.
+ */
+class Persona{
+
+    constructor(nombre, email){
+
+        this.nombre = nombre;
+        this.email = email;
+    }
+}
+
+const persona = new Persona('Jorvict', 'correo@correo.com');
+
+console.log(persona);
