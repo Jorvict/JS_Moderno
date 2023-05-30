@@ -1,4 +1,4 @@
-// Singleton
+// Singleton Pattern - Categoría: De creación
 /**
  * La característica principal del Singleton es no te va a permitir
  * crear múltiples instancias de una misma clase, y sí lo intentas

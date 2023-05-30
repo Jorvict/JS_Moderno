@@ -1,0 +1,1 @@
+// Module Pattern - Categoría: De estructuración

@@ -1,4 +1,4 @@
-// Constructor Pattern
+// Constructor Pattern - Categoría: De creación
 /**
  * En éste patrón de diseño se utiliza una clase base que
  * sirve como "plano" para que las demás clases hereden
