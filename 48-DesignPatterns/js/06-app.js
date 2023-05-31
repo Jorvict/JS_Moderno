@@ -3,7 +3,7 @@
  * module1.hola(); Ejemplo module 05
  */
 
-// Mixin Pattern
+// Mixin Pattern - Categoría: De estructuración
 /**
  * Es una forma de agregar funciones a una clase una vez que ha sido
  * creada
