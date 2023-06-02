@@ -103,10 +103,12 @@
      * Para validar el tiempo que tarda en ejecutar la consulta a una API
      * se puede verificar también desde la pestaña "network" en el debugger 
      * del navegador
+
+     * Nota: Usualmente los for son más rápidos que los forEach
      */ -->
 
 <!-- Cómo utilizar debugger 
-        Con "debugger" podemos detener la ejecución del JS en cierto
+        Con "debugger" podemos pausar la ejecución del JS en cierto
             punto en especifico para poder validar las variables y funciones
             que se tienen hasta el punto marcado, podemos proseguir con la
             ejecución a través del navegador.
@@ -129,3 +131,37 @@
             poco código debido a que al ofuscar código se generarán muchos
             más caracteres lo cual puede afectar gravemente al rendimiento
             sí se ofusca bastante código. -->
+
+<!-- Otras medidas de seguridad 
+        ~ No almacenes Passwords, imágenes ni tarjetas en LocalStorage ni 
+            IndexedDB.
+        ~ El DOM Scripting ya escapa los datos y evita riesgos de seguridad,
+            es decir, algunas vulnerabilidades que obtienes al utilizar
+            innerHTML son evitadas utilizando el DOM Scripting, por ello
+            se recomienda utilizar textContent la mayoría de las veces.
+        ~ Solo utiliza innerHTML cuando la fuente de los datos es segura,
+            es decir por ejemplo sí estás consumiendo tu propia 
+            API. Igualmente de preferencia se suigere usar DOM Scripting.
+
+
+    Para formularios:
+        ~ Valida en el cliente (JS) para brindar retroalimentación a los
+            usuarios en tiempo real, por ejemplo que sea un correo válido,
+            la extensión de un password, etc. Pero tambien validar en el 
+            servidor con el backend. Osea, validar tanto en el front como
+            en el back.
+        ~ Sí deseas crear apps con autenticación de usuarios puedes utilizar
+            JSONWebToken (JWT) que es la técnica más utilizada, o sí no quieres 
+            agregar tanto código puedes utilizar la herramienta "Auth0".
+
+    Otras consideraciones:
+        ~ Cuando trabajes con dependencias, utiliza una herramienta para
+            verificar vulnerabilidades como snyk.io
+        ~ Ofuscar el código si lo consideras necesario.
+        ~ Hashea la información sensible con la librería de bcrypt, sí
+            creas un proyecto que utilice NODE para conectarse a una Base
+            de Datos y autenticar usuarios los passwords deben ser hasheados
+            utilizando bcrypt, de esa forma no serán visibles para nadie,
+            incluso sí se roban la Base de datos no se verá comprometida
+            la información de los usuarios.
+    -->
