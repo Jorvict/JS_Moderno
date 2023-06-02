@@ -52,7 +52,35 @@
         </div>
     </div>
 
-    <script src="js/app.js"></script>
+    <!-- En este script podemos pasar algunos atributos, existen 2 respecto
+            a la ejecución Async y Defer -->
+    <!--Async:  El script se va a descargar y ejecutar inmediatamente una vez
+                    que ha sido descargado, es decir HTML empieza a descargar 
+                    el DOM en orden de arriba hacia abajo y una vez que llega 
+                    aquí (al script) se manda a llamar y ejecuta las funciones 
+                    que tiene, esto puede generar incidencia en ciertos casos 
+                    como por ejemplo si necesitamos la respuesta de una API 
+                    para cargar algún elemento en el HTML (como por ejemplo 
+                    en este caso el Select de Criptomonedas)
+
+                    Los casos donde si se puede utilizar el Async son en 
+                    scripts de código que no modifica la apariencia o el HTML 
+                    inicial.
+                
+                    NOTA: Según lo investigado Async lo que realiza es la 
+                    descarga y ejecución del código JS mientras se renderiza 
+                    el HTML, esto ayuda al rendimiento del sitio web ya que 
+                    el navegador no tendrá que "esperar" a que se descargue y 
+                    ejecute el archivo JS para proseguir con la ejecución del 
+                    HTML sino que realiza ambos en paralelo, se recomienda 
+                    utilizar el async en archivos JS que no cargan o
+                    interactuan inicialmente con elemento del DOM -->
+
+    <!--Defer:  No va a ejecutar el código del script hasta que todo el HTML
+                    esté listo, sí la ejecución del JavaScript depende del
+                    contenido HTML entonces sí es recomendable utilizar 
+                    Defer -->
+    <script src="js/app.js" defer></script>
     
 </body>
 </html>
