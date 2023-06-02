@@ -156,8 +156,7 @@ function mostrarCotizacionHTML(cotizacion) {
      *   que se tienen hasta el punto marcado, podemos proseguir con la
      *   ejecución a través del navegador
      */
-
-    debugger;
+    // debugger;
 
     const precio = document.createElement('p');
     precio.classList.add('precio');
@@ -175,7 +174,7 @@ function mostrarCotizacionHTML(cotizacion) {
     const ultimaActualizacion = document.createElement('p');
     ultimaActualizacion.innerHTML = `<p>Última Actualización: <span>${LASTUPDATE}</span></p>`;
 
-    debugger;
+    // debugger;
 
     resultado.appendChild(precio);
     resultado.appendChild(precioAlto);
