@@ -52,6 +52,7 @@
         </div>
     </div>
 
+    <!-- Async o Defer ¿Cuál utilizar? -->
     <!-- En este script podemos pasar algunos atributos, existen 2 respecto
             a la ejecución Async y Defer -->
     <!--Async:  El script se va a descargar y ejecutar inmediatamente una vez
@@ -84,3 +85,34 @@
     
 </body>
 </html>
+
+<!-- NOTAS TOMADAS DEL JS -->
+<!-- // performance.now() para conocer el tiempo de ejecución
+    /**
+     * La función performance.now es un contador de tiempo de alta
+     * precisión que comienza a contabilizar desde el momento en el que
+     * la página comenzó a cargarse, este contador de tiempo retorna
+     * milisegundos para una mayor precisión, la forma en la que
+     * se utiliza es ejecutar la función y almacenar el valor retornado
+     * en una variable de inicio, ejecutar el bloque de código a verificar
+     * y ejecutar nuevamente la función de performance.now() y almacenarlo
+     * ahora en una variable de fin, para luego restar ambas variables
+     * y así obtener el tiempo transcurrido durante la ejecución del bloque
+     * de código.
+     * 
+     * Para validar el tiempo que tarda en ejecutar la consulta a una API
+     * se puede verificar también desde la pestaña "network" en el debugger 
+     * del navegador
+     */ -->
+
+<!-- Cómo utilizar debugger -->
+<!-- Con "debugger" podemos detener la ejecución del JS en cierto
+        punto en especifico para poder validar las variables y funciones
+        que se tienen hasta el punto marcado, podemos proseguir con la
+        ejecución a través del navegador -->
+
+<!-- Sí la aplicación se está quedando sin memoria podemos ingresar a la
+        pestaña "memory" y tomar un snapshot para validar en qué parte de
+        la aplicación se está consumiendo más memoria  -->
+
+        

@@ -150,7 +150,14 @@ function mostrarCotizacionHTML(cotizacion) {
     const  { PRICE, HIGHDAY, LOWDAY, CHANGEPCT24HOUR, LASTUPDATE } = cotizacion;
 
 
-    // debugger;
+    /**
+     *  Con "debugger" podemos detener la ejecución del JS en cierto
+     *   punto en especifico para poder validar las variables y funciones
+     *   que se tienen hasta el punto marcado, podemos proseguir con la
+     *   ejecución a través del navegador
+     */
+
+    debugger;
 
     const precio = document.createElement('p');
     precio.classList.add('precio');
@@ -168,7 +175,7 @@ function mostrarCotizacionHTML(cotizacion) {
     const ultimaActualizacion = document.createElement('p');
     ultimaActualizacion.innerHTML = `<p>Última Actualización: <span>${LASTUPDATE}</span></p>`;
 
-    // debugger;
+    debugger;
 
     resultado.appendChild(precio);
     resultado.appendChild(precioAlto);
