@@ -37,15 +37,49 @@ function consultarCriptomonedas() {
 // llena el select 
 function selectCriptomonedas(criptomonedas) {
 
-    criptomonedas.forEach( cripto => {
-        const { FullName, Name } = cripto.CoinInfo;
+    // Conocer el tiempo de ejecución
+    /**
+     * La función performance.now es un contador de tiempo de alta
+     * precisión que comienza a contabilizar desde el momento en el que
+     * la página comenzó a cargarse, este contador de tiempo retorna
+     * milisegundos para una mayor precisión, la forma en la que
+     * se utiliza es ejecutar la función y almacenar el valor retornado
+     * en una variable de inicio, ejecutar el bloque de código a verificar
+     * y ejecutar nuevamente la función de performance.now() y almacenarlo
+     * ahora en una variable de fin, para luego restar ambas variables
+     * y así obtener el tiempo transcurrido durante la ejecución del bloque
+     * de código.
+     * 
+     * Para validar el tiempo que tarda en ejecutar la consulta a una API
+     * se puede verificar también desde la pestaña "network" en el debugger 
+     * del navegador
+     */
+    const startTime = performance.now();
+
+    // criptomonedas.forEach( cripto => {
+    //     const { FullName, Name } = cripto.CoinInfo;
+    //     const option = document.createElement('option');
+    //     option.value = Name;
+    //     option.textContent = FullName;
+    //     // insertar el HTML
+    //     criptomonedasSelect.appendChild(option);
+    // });
+
+    // Usualmente los for son más rápidos que los forEach
+    for(let i = 0; i < criptomonedas.length; i++){
+
+        const { FullName, Name } = criptomonedas[i].CoinInfo;
         const option = document.createElement('option');
         option.value = Name;
         option.textContent = FullName;
         // insertar el HTML
         criptomonedasSelect.appendChild(option);
-    });
 
+    }
+
+    const endTime = performance.now();
+
+    console.log(`El Select de Criptomonedas se ejecutó en ${endTime - startTime}ms)`);
 }
 
 
@@ -89,6 +123,8 @@ function mostrarAlerta(mensaje) {
 
 function consultarAPI() {
 
+    const startTime = performance.now();
+
     const { moneda, criptomoneda} = objBusqueda;
 
     const url = `https://min-api.cryptocompare.com/data/pricemultifull?fsyms=${criptomoneda}&tsyms=${moneda}`;
@@ -101,6 +137,9 @@ function consultarAPI() {
             mostrarCotizacionHTML(cotizacion.DISPLAY[criptomoneda][moneda]);
         });
 
+    const endTime = performance.now();
+
+    console.log(`El tiempo de respuesta de la API es de ${endTime - startTime}ms`);
 }
 
 function mostrarCotizacionHTML(cotizacion) {
@@ -111,7 +150,7 @@ function mostrarCotizacionHTML(cotizacion) {
     const  { PRICE, HIGHDAY, LOWDAY, CHANGEPCT24HOUR, LASTUPDATE } = cotizacion;
 
 
-    debugger;
+    // debugger;
 
     const precio = document.createElement('p');
     precio.classList.add('precio');
@@ -129,7 +168,7 @@ function mostrarCotizacionHTML(cotizacion) {
     const ultimaActualizacion = document.createElement('p');
     ultimaActualizacion.innerHTML = `<p>Última Actualización: <span>${LASTUPDATE}</span></p>`;
 
-    debugger;
+    // debugger;
 
     resultado.appendChild(precio);
     resultado.appendChild(precioAlto);
