@@ -20,6 +20,9 @@ expected(esperado).toEqual(resultado);
 
 function expected( esperado ){
 
+    // Esta sintaxis se conoce como factory function, es una función
+    // que retorna un objeto con varias funciones a las cuales podremos
+    // acceder una vez que sea llamada la función principal (expected)
     return{
         toBe(resultado){
 
