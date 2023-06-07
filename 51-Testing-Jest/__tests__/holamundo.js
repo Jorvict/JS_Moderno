@@ -4,7 +4,7 @@
  *      ~ Generamos un archivo "package.json" utilizando el comando "npm init".
  *      ~ Debemos inicializar una carpeta de node_modules como dependencia de desarrollo
  *          usando el comando "npm i --save-dev jest", esto también instalará jest en la ruta
- *          especificada en la terminal, recordar que la ruta debe estar en la carpte principal del
+ *          especificada en la terminal, recordar que la ruta debe estar en la carpeta principal del
  *          proyecto.
  *      ~ Dentro del archivo package.json modificamos la propiedad "test" dentro de "script", 
  *          eliminamos la ruta y como valor colocamos "jest".
