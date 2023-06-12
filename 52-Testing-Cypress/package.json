@@ -1,0 +1,15 @@
+{
+  "name": "52-testing-cypress",
+  "version": "1.0.0",
+  "description": "Aprendiendo Cypress",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jorvict Piña",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/cypress": "^1.1.3",
+    "cypress": "^12.14.0"
+  }
+}
