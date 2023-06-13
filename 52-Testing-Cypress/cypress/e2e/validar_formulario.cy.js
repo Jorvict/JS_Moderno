@@ -4,7 +4,7 @@ describe('Valida el formulario', () => {
     it('Submit al formulario y mostrar la alerta de error', () => {
 
         // Siempre debemos visitar la web al inicio
-        cy.visit('http://127.0.0.1:5500/52-Testing-Cypress/index.html');
+        cy.visit('/index.html');
 
         // Seleccionar un elemento del DOM con cy.get, se podría decir que 
         //  es como el document.querySelector

@@ -8,7 +8,7 @@ describe('Carga la página principal', () =>{
         // La gran parte de las funciones de Cypress inician con "cy"
 
         // Primero debemos conectarnos al proyecto
-        cy.visit('http://127.0.0.1:5500/52-Testing-Cypress/index.html');
+        cy.visit('/index.html');
 
         // Se aplica buenas prácticas de Cypress seleccionando elementos
         // Verificar que el elemento "h1" exista
