@@ -62,5 +62,15 @@
  * únicos. Cypress lo que se sugiere como buenas práticas para seleccionar
  * elementos y trabajarlos es asignar en la etiqueta HTML un atributo 
  * llamado "data-cy" y asignarle un nombre que pueda ser unico en el
- * proyecto
+ * proyecto.
+ * 
+ * 
+ * ########## Validación de Formularios ##########
+ * 
+ * Sí queremos validar un elemento que se ha generado mediante Scripting
+ * podemos generarle el atributo data-cy mediante el propio Scripting
+ * haciendo uso del dataset de la siguiente manera: 
+ *  (selectorJS).dataset.cy = (nombre_del_selector_cy)
+ * De esta manera al generar el elemento con scripting, también le añadirá
+ * el atributo data-cy
  *  */
