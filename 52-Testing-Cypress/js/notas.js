@@ -51,4 +51,16 @@
  *      y URL, se especifica como hijo de "e2e" y hermano de
  *      setupNodeEvents.
  * 
+ * 
+ * ########## Los Atributos en Cypress ##########
+ * 
+ * Tener en cuenta que al trabajar los elementos en Cypress no se 
+ * recomienda que seleccionen por nombre de etiqueta HTML 
+ * (h1, h2, input, button, etc.) ya que es gneértico y muy probable 
+ * que hayan muchos mas elementos con el mismo nombre, tampoco es idoneo
+ * seleccionarlos por clase ni ID a pesar de que estos podrían ser
+ * únicos. Cypress lo que se sugiere como buenas práticas para seleccionar
+ * elementos y trabajarlos es asignar en la etiqueta HTML un atributo 
+ * llamado "data-cy" y asignarle un nombre que pueda ser unico en el
+ * proyecto
  *  */

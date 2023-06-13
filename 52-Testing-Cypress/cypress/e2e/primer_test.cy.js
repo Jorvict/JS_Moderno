@@ -10,12 +10,27 @@ describe('Carga la página principal', () =>{
         // Primero debemos conectarnos al proyecto
         cy.visit('http://127.0.0.1:5500/52-Testing-Cypress/index.html');
 
-        // Validamos que el elemento "h1" exista
-        cy.get('h1').should('exist');
+        // Se aplica buenas prácticas de Cypress seleccionando elementos
+        // Verificar que el elemento "h1" exista
+        cy.get('[data-cy="titulo-proyecto"]').should('exist');
 
-        // Validamos que dicho elemento h1 contenga el texto especificado
-        cy.contains('h1', 'Administrador de Pacientes de Veterinaria');
+        // Verificar que dicho elemento h1 contenga el texto especificado
+        cy.contains('[data-cy="titulo-proyecto"]', 'Administrador de Pacientes de Veterinaria');
 
 
+        // Verificar que exista el elemento y contenga un texto en específico
+        cy.get('[data-cy="titulo-proyecto"]')
+            .invoke('text') // Seleccionamos su texto
+            .should('equal', 'Administrador de Pacientes de Veterinaria')
+
+        // Verificar el texto de las citas
+        // El selector puede ir sin comillas
+        cy.get('[data-cy=citas-heading]')
+            .invoke('text')
+            .should('equal', 'No hay Citas, comienza creando una');
+
+        cy.get('[data-cy=citas-heading]')
+            .invoke('text')
+            .should('not.equal', 'Jorvict Piña');    
     });
 });
