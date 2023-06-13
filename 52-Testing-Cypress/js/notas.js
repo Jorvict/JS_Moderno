@@ -25,9 +25,9 @@
  *      npm i --save-dev cypress
  * ~ Luego ejecutamos el siguiente comando:
  *      npx cypress open
- * ~ En caso de presentar algún error al momento de isntalar o
+ * ~ En caso de presentar algún error al momento de instalar o
  *      ejecutar por primera vez, borramos la carpeta node_modules
- *      (sí se creo alguna) vamos al archivo package.jsn y nos
+ *      (sí se creo alguna) vamos al archivo package.json y nos
  *      aseguramos de tener la dependencia de cypress, y validamos
  *      que sea la versión 12.14.0
  * ~ Una vez validado, ejecutamos el comando :
@@ -37,7 +37,7 @@
  *      pruebas e2e (end-to-end) y luego ingresamos en Specs
  *      para que se generen las carpetas con los tests defaults
  * ~ Los tests serán generados en una carpeta llamada "e2e" que
- *      será generada dentro de la carpeta "Cypress", en caso no se 
+ *      será generada dentro de la carpeta "cypress", en caso no se 
  *      haya generado podemos generarla nosotros mismos
  * ~ Dentro de dicha carpeta van los archivos de los tests, los
  *      cuales debemos nombrar especificamente según la siguiente
@@ -45,9 +45,10 @@
  * ~ Para configurar cypress podemos editar el archivo llamado:
  *      cypress.config.js, podemos modificar el viewport y
  *      la URL base desde acá, pero tener en cuenta que las
- *      especificaciones van dentro de la función setupNodeEvents
- *      y cada elemento va aparte, es decir, ya no es como antes
- *      que iba todo en un json y los elementos se separaban con
- *      comas (,), ahora se separa con punto y coma(;)
+ *      especificaciones van a la altura de la función 
+ *      setupNodeEvents y no dentro de dicha función,
+ *      es decir, por lo menos para el tamaño de viewport,
+ *      y URL, se especifica como hijo de "e2e" y hermano de
+ *      setupNodeEvents.
  * 
  *  */
