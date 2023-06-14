@@ -72,5 +72,29 @@
  * haciendo uso del dataset de la siguiente manera: 
  *  (selectorJS).dataset.cy = (nombre_del_selector_cy)
  * De esta manera al generar el elemento con scripting, también le añadirá
- * el atributo data-cy
+ * el atributo data-cy.
+ * 
+ * ########## Editar Citas ##########
+ * Sí vamos a editar una cita previamente debimos haber creado
+ * una, en el contexto del desarrollo de ésta práctica, el
+ * registro es generado haciendo uso del .type y luego lo
+ * editamos en el mismo archivo, según se puede visualizar
+ * en el código del archivo "editar_cita.cy.js", sin embargo
+ * ambas funciones (de generar y editar) están separados en
+ * it distintos pero agrupados dentro del mismo describe,
+ * al estar separados en distintos it puede que al ejecutar el
+ * test, al finalizar la primera prueba se elimine todo lo que
+ * se visualizaba en la pantalla de Cypress, esto sucede cuando 
+ * las pruebas se ejecutan en contextos aislados. Esta 
+ * configuración suele venir habilitada por defecto a partir de
+ * la versión 8.0 de Cypress.
+ * 
+ * Para deshabilitarlo y evitar este incidente debemos 
+ * configurar en el archivo cypress.config.js un atributo de la 
+ * siguiente manera:
+ * 
+ * testIsolation : false
+ * 
+ * Esta configuración se coloca a la altura de baseURL, y
+ * de la función setupNodeEvents.
  *  */
