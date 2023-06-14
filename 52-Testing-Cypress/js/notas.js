@@ -97,4 +97,29 @@
  * 
  * Esta configuración se coloca a la altura de baseURL, y
  * de la función setupNodeEvents.
+ * 
+ * ########## ¿Qué más ofrece Cypress? ##########
+ * En el presente curso se trabajó desde la interfaz gráfica de
+ * Cypress ejecutandolo con el comando "npx cypress open",
+ * sin embargo también podemos ejecutar Cypress desde CLI,
+ * es decir, desde la terminal, para esto debemos EJECUTAR
+ * EL COMANDO "npx cypress run", tener en cuenta que esto
+ * ejecutará todos los tests almacenados en la carpeta "e2e"
+ * y almacenará una grabación de la interfaz realizando 
+ * la ejecución de los diversos tests aplicados al sitio web.
+ * La grabación puede que esté en baja resolución, para 
+ * incrementar la calidad vamos al archivo de configuración
+ * "cypress.config.js" y a la altura de la funcion 
+ * setupNodeEvents colocamos lo siguiente:
+ * videoCompression : 0
+ * 
+ * De esa manera el vídeo no será comprimido, tener en
+ * conocimiento que el rango de videoCompression va de 0 a 51
+ * siendo 0 el valor mas bajo y donde menos se comprime y 51
+ * el valor máximo donde el video será más comprimido afectando
+ * a su calidad.
+ * 
+ * Adicionalmente, sí deseamos que Cypress nos genere un 
+ * screenshot, podemos realizarlo escribiendo la función
+ * cy.screenshot();
  *  */
