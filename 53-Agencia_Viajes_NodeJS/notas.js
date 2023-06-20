@@ -84,4 +84,33 @@
  * Ruby on rails puede ser que vengan con más funciones de las que en realidad
  * requieres para tu proyecto.
  * 
+ * ########## Instala la última versión de Node para utilizar Imports y Exports ##########
+ *  - Instalamos Node, NPM y chocolatey desde su página web
+ *  - En la ruta de nuestro proyecto ejecutamos el comando npm init
+ *      para generar el archivo package.json
+ *  - Procederemos a instalar express como DEPENDENCIA DE PRODUCCIÓN, existen
+ *      2 tipos de dependencias, las dependencias de desarrollo y las
+ *      dependencias de producción, las de desarrollo son aquellas que 
+ *      requerimos y utilizamos mientras desarrollamos el proyecto, y las de 
+ *      producción son aquellas que se van a requerir cuando el proyecto ya se 
+ *      encuentre publicado. Para instalar como dependencia de producción
+ *      ejecutamos como siempre (npm install X_paquete) ya que es la
+ *      configuración por defecto, dicha dependencias se subirá al servidor 
+ *      cuando el proyecto sea desplegado, caso contrario sí solamente se
+ *      requiere mientras desarrollamos el proyecto, entonces agregamos 
+ *      "--save-dev" al comando de instalacion para especificar que es una
+ *      dependencia de desarrollo.
+ *      npm install --save-dev X_paquete
+ *  - Podemos identificar las dependencias de desarrollo y de producción a 
+ *      través del archivo package.json, las de desarrollo son aquellas
+ *      dentro del objeto "devDependencies" mientras que las de producción
+ *      están dentro de "dependencies"
+ *  - Recordar, instalar express como dependencia de producción
+ *  - Instalamos Nodemon como dependencia de desarrollo, Nodemon funciona
+ *      para detectar cambios en los archivos y reiniciar el servidor,
+ *      esto es útil para refrescar el site cada vez que modificamos el
+ *      código mientras ejecutamos el servidork, así ya no tendremos que
+ *      ir a la terminal, detener el servidor y volverlo a arrancar cada
+ *      vez que hagamos algún cambio.
+ * 
  */
