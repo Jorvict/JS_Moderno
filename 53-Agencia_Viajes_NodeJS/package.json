@@ -1,0 +1,11 @@
+{
+  "name": "53-agencia_viajes_nodejs",
+  "version": "1.0.0",
+  "description": "Primer proyecto con Node.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jorvict Piña",
+  "license": "ISC"
+}
