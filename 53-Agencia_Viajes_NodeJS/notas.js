@@ -147,5 +147,43 @@
  * en el app del index.js principal seguimos usando Express con las
  * extensiones establecidas en el Router a través del index.js de routes.
  * 
+ * ########## ¿Qué es un Template Engine? y habilitando Pug ##########
+ * Los Template Engines o también conocidos como motores de plantilla son
+ * la V(Vista/View) del MVC(Modelo Vista Controlador/Model View Controller).
  * 
+ * Permiten mostrar la parte visual (HTML) en una aplicación de Express,
+ * debido a que el modelo retorna un objeto (o arreglo) de datos, un
+ * template engine permitirá acceder a los resultados de una consulta y
+ * mostrarlos en pantalla
+ * 
+ * ===== Características de un Template Engine =====
+ * ~ Hay una gran variedad y cada uno tiene su propia sintaxis.
+ * ~ Usualmente puedes escribir código JS dentro del HTML
+ * ~ Sí tienes experiencia en angular, React o Vue, estos usualmente suelen
+ *      reemplazar a los template engines en una aplicación
+ * 
+ * ===== Template Engines más comunes en Node - Express =====
+ *  ~ PUG - (Antes Jade)
+ *  ~ EJS - Embedded JavaScript
+ *  ~ HBS - Handlebars.JS (Antes Mustache.JS)
+ *  ~ REACT - Sintaxis similar al framework
+ * 
+ * ===== Instalación de Template Engine =====
+ * ~ Se instalan vía npm como dependencia de producción:
+ *      npm install pug
+ * ~ Se habilita en el archivo principal (el index.js de la raíz):
+ *      app.set('view engine', 'pug');
+ * ~ Creamos una carpeta "views" en la raíz del proyecto
+ * ~ Dentro creamos un archivo con el nombre de una URL establecida en el
+ *      routing, como por ejemplo "nosotros" y le agregamos la extensión
+ *      de .pug, quedando "nosotros.pug", recordar que en el routing el
+ *      response del .get debe ser un render (res.render)
+ * 
+ * ===== Sintaxis de Pug =====
+ * Tener en cuenta que en pug es muy importante la identación puesto que
+ * no existen llaves para bloques de código así que aquel código que esté
+ * más identado que otro significa que es su hijo y por lo tanto dentro
+ * de un bloque de código inferior.
+ * No existen apertura y cierre de etiquetas de los HTML
+ *
  */

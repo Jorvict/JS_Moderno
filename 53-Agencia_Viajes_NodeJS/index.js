@@ -16,6 +16,9 @@ const app = express();
     estamos en desarrollo local y no deploy, lo asignará el puerto 4000 */
 const port = process.env.PORT || 4000;
 
+// Habilitar PUG
+app.set('view engine', 'pug');
+
 // Agregar router
 //.use soporta GET, POST, PUT, PATCH, DELETE, y lo que hará la siguiente
 // línea es agregar las rutas establecidas y anexarlos a la pagina principal

@@ -31,7 +31,7 @@ router.get('/', (req, res) => {
 });
 
 router.get('/nosotros', (req, res) => {
-    res.send('Nosotros');
+    res.render('Nosotros');
 });
 
 router.get('/contacto', (req, res) =>{
