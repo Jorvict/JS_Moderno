@@ -254,4 +254,66 @@
  * Sí deseas que sea una etiqueta en especifico puedes colocar el nombre de la 
  * etiqueta, seguido de un . y los nombres de las clases. Por ejemplo:
  * "nav.mt-5.mt-md-0.nav.justify-content-center.justify-content-md-end"
+ * 
+ * ########## Middleware en Express ##########
+ * Un middleware en Express es una función que se utiliza para procesar y
+ * manipular las solicitudes HTTP que llegan a una aplicación web. Funciona
+ * como una capa intermedia entre el servidor y las rutas definidas en la
+ * aplicación. Puede acceder y modificar el objeto de la solicitud (req), el
+ * objeto de respuesta (res), y el siguiente middleware en la cadena (next).
+ * Puede realizar diversas tareas como validar datos, autenticar usuarios,
+ * manejar errores, realizar registro y seguimiento, entre otros. Cabe mencionar
+ * que el middleware se ejecuta secuencialmente en el orden en el que se
+ * define en la aplicación. En ocasiones es posible que la ejecución del
+ * middleware se bloquee y que no continue con la ejecución de los siguientes
+ * middlewares, lo cual podría ocasionar que no se carguen las páginas a los
+ * usuarios, por lo cual se considera una buena práctica llamar a la función
+ * next() al final del middleware, y en caso no funcione, forzarlo haciendo
+ * uso de un "return next()".
+ * 
+ * Es importante tener en cuenta que no en todos lo casos es recomendable
+ * colocar un next(), principalmente cuando la ejecución se debe detener, 
+ * forzosamente, un ejemplo sería sí falla la autenticación de un usuario,
+ * al haber fallado no se pueden mostrar las siguientes páginas de acceso
+ * ni ejecutar sus respectivos middlewares ya que se daría acceso a un usuario
+ * no permitido.
+ * 
+ * Para mas detalle, los middlewares donde no se recomienda colocar el next()
+ * son los siguientes:
+ *      ~ Middleware de manejo de errores: En los middleware de manejo de
+ *      errores, no se requiere llamar a "next()" ya que su objetivo principal
+ *      es capturar y manejar los errores que ocurren en la aplicación. Una
+ *      vez que el error es manejado no se espera que la ejecución continue hacia
+ *      otros middlewares. En lugar de eso, se envía una respuesta al cliente o se
+ *      realiza alguna otra acción adecuada.
+ * 
+ *      ~ Middleware de autenticación: En algunos casos, los middlewares de
+ *      autenticación pueden detener la ejecución si la autenticación falla. Sí
+ *      no se puede autenticar al usuario, no tiene sentido continuar hacia
+ *      otros middlewares. En éste caso, el middleware de autenticación puede
+ *      enviar una RESPUESTA DE ERROR o REDIRIGIR AL USUARIO a una página de
+ *      inicio de sesión
+ * 
+ *      ~ Middleware de rutas finales: Sí tienes un middleware que se utiliza
+ *      como un controlador final de rutas, es posible que no necesites llamar
+ *      a "next()". Este tipo de middleware suele ser utilizado para manejar
+ *      rutas especificas y enviar una respuesta al cliente. Una vez que se
+ *      envía la respuesta, la ejecución se considera complet y no hay necesidad
+ *      de continuar hacia otros middlewares.
+ * 
+ * 
+ * Express maneja un objeto de variables internas llamada "locals", puedes
+ * hacer referencia a ellos con "res.locals" dentro de un middleware, sí deseas
+ * establecer una nueva propiedad para el objeto locals puedes realizarlo a
+ * través de la sintáxis de punto.
+ * 
+ * Algo a tener en cuenta es que si hacemos un console.log a la variable desde
+ * un middleware definido con .use es posible que en consola se imprima varias
+ * veces la variable, esto es debido a que si el middleware se registró con
+ * .use entonces éste se ejecutará para todas las solicitudes que lleguen
+ * a la aplicación (GET, POST, PUT, PATCH, DELETE).
+ * 
+ * Algo también a tener en cuenta es que las variables creadas y almacenadas en
+ * res.locals están disponibles para las Views, es decir, desde los archivos
+ * .pug se puede hacer referencia directamente a dichas variables.
  */
