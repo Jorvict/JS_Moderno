@@ -136,4 +136,16 @@
  * subpaginas en el index.js principal el archivo se hará muy pesado por
  * lo cual una opción altamente recomendable es realizar Routing que es 
  * pasar dichos .get a otros archivos y enlazarlos con el index principal
+ * 
+ * ########## Routing en Express ##########
+ * Creamos una carpeta llamada "routes" en la raíz del proyecto y creamos
+ * un archivo llamado "index.js" dentro, tener en cuenta que dentro del
+ * archivo no podemos volver a instanciar haciendo uso de app para express
+ * debido a que ya se está utilizando en el index.js principal ubicado en la
+ * raíz y solamente se debe tener una instancia de app. Lo que si podemos
+ * hacer es importar express para luego definir el router, de esta manera
+ * en el app del index.js principal seguimos usando Express con las
+ * extensiones establecidas en el Router a través del index.js de routes.
+ * 
+ * 
  */
