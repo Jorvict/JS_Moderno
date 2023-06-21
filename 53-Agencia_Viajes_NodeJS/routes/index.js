@@ -21,7 +21,7 @@ const router = express.Router();
  * RECORDAR QUE GET ES CUANDO VISITAS UNA URL
  */
 router.get('/', (req, res) => {
-    res.send('Inicio'); // Express envia un texto al usuario del site
+    res.render('inicio'); // Express envia un texto al usuario del site
 
     /* res.json({
         id: 1 Express envía un JSON al usuario del site
@@ -31,7 +31,14 @@ router.get('/', (req, res) => {
 });
 
 router.get('/nosotros', (req, res) => {
-    res.render('Nosotros');
+
+    const viajes = 'Cambiando el texto';
+
+    // El .pug renderizado, dentro del objeto consecutivo van todos los
+    //datos que requerimos enviar a dicha vista
+    res.render('nosotros', {
+        viajes, // Es igual a viajes:viajes
+    });
 });
 
 router.get('/contacto', (req, res) =>{

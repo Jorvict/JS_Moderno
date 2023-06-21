@@ -186,4 +186,21 @@
  * de un bloque de código inferior.
  * No existen apertura y cierre de etiquetas de los HTML
  *
+ * ########## Pasar variables hacia las vistas ##########
+ * Usualmente a través de un controlador se pasará una consulta a una BD,
+ * o también se pasarán variables de forma condicional (Por ejemplo si el
+ * usuario está autenticado o no), los datos que se pasarán a la vista van
+ * dentro de un objeto que se pasa como argumento al response.render en 
+ * conjunto con el nombre de la vista a la cual se está accediendo, para
+ * más detalle revisar funciones router.get del archivo de routing.
+ * 
+ * Para utilizar alguna de las variables que se pasaron como argumento,
+ * simplemente desde el archivo pug colocamos la etiqueta y un = asignandole
+ * la variable, por ejemplo "p= viajes", generara una etiqueta P y como
+ * valor le asignará lo que contenga la variable viajes. COMO OBSERVACIÓN
+ * NO DEJAR ESPACIOS ENTRE LA ETIQUETA Y EL "=", DEBEN IR JUNTAS, de lo
+ * contrario pug no lo detectará como asignación de variable.
+ * Una sintáxis alternativa es de la siguiente forma "p #{viajes}", donde
+ * también se deben respetar tal cual los espacios
+ * 
  */
