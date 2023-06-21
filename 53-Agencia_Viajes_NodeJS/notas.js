@@ -112,5 +112,28 @@
  *      código mientras ejecutamos el servidork, así ya no tendremos que
  *      ir a la terminal, detener el servidor y volverlo a arrancar cada
  *      vez que hagamos algún cambio.
+ * - Generamos el archivo index.js que es donde vamos a configurar express
+ * - Para ejecutar el index.js y poder arrancar el servidor necesitamos el
+ *      package.json, es nuestra segunda utilidad de dicho archivo, para
+ *      ejecutar el index vamos al archivo package y en el objeto "scripts"
+ *      creamos una key con el nombre "dev", como value le colocamos
+ *      nodemon (para que detecte los cambios) index.js.
+ *      Ahora vamos a la terminal con la ruta de nuestro proyecto, y
+ *      ejecutamos el script creado con el comando "npm run dev".
+ * - Para visualizar el proyecto abrimos el navegador y vamos a la url 
+ *      localhost:4000
  * 
+ * ########## Habilitando la Sintaxis de Imports y Exports ##########
+ *
+ * Anteriormente cuando aún no existían los Modules para poder importar
+ * en Express se utilizaba CommonJS, sin embargo en la actualidad ya se
+ * puede utilizar los Modules, no obstante deben habilitarse en primer
+ * lugar, para ello debemos ir al package.json y justo antes del author
+ * y despues del objeto de scripts, colocamos la key "type" con un value
+ * de "module" (también se puede habilitar "commonjs" en caso se requiera).
+ * 
+ * Tener en consideración que si colocamos todos los .get para acceder a
+ * subpaginas en el index.js principal el archivo se hará muy pesado por
+ * lo cual una opción altamente recomendable es realizar Routing que es 
+ * pasar dichos .get a otros archivos y enlazarlos con el index principal
  */
