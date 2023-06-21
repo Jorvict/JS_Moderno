@@ -240,5 +240,18 @@
  * public debido a que así se definió en el archivo index.js principal con
  * el comando específicado en el parráfor superior
  * 
+ * ########## Creando un header y navegación principal ##########
+ * En caso deseemos incluir más de una sección provenientes de otros archivos y
+ * agregarlos al archivo master page lo podemos realizar haciendo uso de 
+ * "Include", este se diferencia en que el include agrega el código de otro
+ * archivo pug tal cuál, como sí se hubiera copiado y pegado todo el código 
+ * mientras que block si permite realizar modificaciones. Al usar el include
+ * se coloca la ruta donde se encuentra el archivo que tiene el código a usar.
  * 
+ * La sintaxis de pug permite agregar clases sin necesidad de los parentesis,
+ * solamente colocando "." y el nombre de la clase, si no se especifica que
+ * tipo de etiqueta es, por defecto generará un DIV con las clases especificadas.
+ * Sí deseas que sea una etiqueta en especifico puedes colocar el nombre de la 
+ * etiqueta, seguido de un . y los nombres de las clases. Por ejemplo:
+ * "nav.mt-5.mt-md-0.nav.justify-content-center.justify-content-md-end"
  */
