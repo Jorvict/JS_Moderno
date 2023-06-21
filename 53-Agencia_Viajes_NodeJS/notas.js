@@ -203,4 +203,26 @@
  * Una sintáxis alternativa es de la siguiente forma "p #{viajes}", donde
  * también se deben respetar tal cual los espacios
  * 
+ * ########## Creando un layout principal (Master Page) ##########
+ * Nos evitará tener que repetir código constantemente, para un mejor
+ * orden se recomienda ingresar a la carpeta "views" y dentro de ella
+ * crear una carpeta con nombre "layout", dentro de esta carpeta irían
+ * aquellos diseños que suelen repetirse como por ejemplo el header, navbar,
+ * footer, entre otros.
+ * 
+ * Dentro de la carpeta generamos un archivo index.pug que será como la página 
+ * principal, primero definimos la base que siempre será "estática", o sea,
+ * que siempre tendrá el mismo contenido para todas las páginas, y luego
+ * definimos el bloque de contenido "block contenido", esta directiva
+ * se utiliza para establecer bloques de contenido reemplazables y que se
+ * pueden modificar.
+ * 
+ * Para poder "halar" la plantilla de la master page, nos vamos al archivo
+ * .pug donde se encuentra el contenido y jalamos la ruta haciendo uso de
+ * extends, p. ej: "extends ./layout/index", luego colocamos "block contenido"
+ * y haciendo salto de línea colocamos lo que se quiera renderizar de
+ * contenido haciendo uso de la master page de inicio, tener en cuenta
+ * que todo el código de contenido debe estar identado para que esté dentro
+ * del bloque de la master page
+ * 
  */
