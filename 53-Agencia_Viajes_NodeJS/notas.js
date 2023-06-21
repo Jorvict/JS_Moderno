@@ -185,6 +185,8 @@
  * más identado que otro significa que es su hijo y por lo tanto dentro
  * de un bloque de código inferior.
  * No existen apertura y cierre de etiquetas de los HTML
+ * Sí queremos pasar atributos a la etiqueta, deben ser dentro de unos
+ * paréntesis, p. ej: img(src="img/photo01.jpg")
  *
  * ########## Pasar variables hacia las vistas ##########
  * Usualmente a través de un controlador se pasará una consulta a una BD,
@@ -224,5 +226,19 @@
  * contenido haciendo uso de la master page de inicio, tener en cuenta
  * que todo el código de contenido debe estar identado para que esté dentro
  * del bloque de la master page
+ * 
+ * ########## Agregar Hojas de Estilos y Archivos estáticos ##########
+ * Generamos una carpeta con nombre "public" en la raíz, dentro de esta 
+ * carpeta irán los archivos CSS e imágenes que se requieran para el proyecto.
+ * Luego establecemos en Express que esa será la carpeta pública de donde se 
+ * obtendrán las hojas de estilos e imágenes. Esto se realizará en el index.js
+ * de la raíz. app.use(express.static('public'));
+ * 
+ * Para agregar una imagen desde un archivo .pug colocamos la etiqueta
+ * img y el atributo src (que va dentro de parentesis), tener en cuenta
+ * que la ruta del src va a ser relativa como si estuvieramos en la carpeta
+ * public debido a que así se definió en el archivo index.js principal con
+ * el comando específicado en el parráfor superior
+ * 
  * 
  */
