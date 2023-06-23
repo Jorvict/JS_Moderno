@@ -316,4 +316,19 @@
  * Algo también a tener en cuenta es que las variables creadas y almacenadas en
  * res.locals están disponibles para las Views, es decir, desde los archivos
  * .pug se puede hacer referencia directamente a dichas variables.
+ *
+ * ########## Creando todas las vistas ##########
+ * 
+ * Podemos generar varias plantillas .pug en donde el encabezado sea la misma
+ * variable, pero el valor que se le pase a dicha variable cambiará en el
+ * routing, de esta manera en cierto modo se puede usar el mismo código entre 
+ * plantillas, además, en el index.pug (la master page) se puede hacer uso
+ * de esa misma variable para el Title, de ésta manera la masterpage cambiará
+ * de título de página según la variable que reciba en el routing de la
+ * página a la que estamos accediendo, esto podría beneficiar al CEO. En caso
+ * deseemos utilizar dos variables debemos utilizar la sintáxis "#{variable}"
+ * Por ejemplo: title #{nombreSitio} | #{pagina}
+ * (No dejar espacios entre el #, las llaves y variable)
+ * 
+ * 
  */

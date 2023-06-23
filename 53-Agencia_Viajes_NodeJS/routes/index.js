@@ -21,7 +21,12 @@ const router = express.Router();
  * RECORDAR QUE GET ES CUANDO VISITAS UNA URL
  */
 router.get('/', (req, res) => {
-    res.render('inicio'); // Express envia un texto al usuario del site
+
+
+
+    res.render('inicio', {
+        pagina: 'Inicio'
+    }); // Express envia un texto al usuario del site
 
     /* res.json({
         id: 1 Express envía un JSON al usuario del site
@@ -38,11 +43,20 @@ router.get('/nosotros', (req, res) => {
     //datos que requerimos enviar a dicha vista
     res.render('nosotros', {
         viajes, // Es igual a viajes:viajes
+        pagina: 'Nosotros'
     });
 });
 
-router.get('/contacto', (req, res) =>{
-    res.send('Contacto');
+router.get('/viajes', (req, res) =>{
+    res.render('viajes', {
+        pagina: 'Viajes'
+    });
+});
+
+router.get('/testimoniales', (req, res) =>{
+    res.render('testimoniales', {
+        pagina: 'Testimoniales'
+    });
 });
 
 export default router;
