@@ -330,7 +330,6 @@
  * Por ejemplo: title #{nombreSitio} | #{pagina}
  * (No dejar espacios entre el #, las llaves y variable)
  * 
- * 
  * ########## Conectando a una base de datos MYSQL ##########
  * 
  * Debemos tener instalado MYSQL y TablePlus con anterioridad, importamos la 
@@ -351,4 +350,40 @@
  * 
  * Procedemos a crear una carpeta llamada "config" en la raíz y dentro de
  * esta carpeta creamos un archivo llamado "db.js"
+ * 
+ * ########## Introducción a MVC y creando un Modelo ##########
+ * MVC o Model View Controller es un patrón de diseño de software que permite
+ * la separación de obligaciones de cada pieza de código en tu aplicación web.
+ * 
+ * Enfatiza la separación de la lógica de programación y lo que se muestra en
+ * la pantalla. Esto se realiza principalmente en el controlador con los datos
+ * que se pasan hacia la vista.
+ * 
+ * Model = Modelo
+ * View = Vista
+ * Controller = Controlador
+ * 
+ *  ~ Model: Es el encargado de los datos (Desde una base de datos) y de la
+ *          lógica para mostrar esos datos. Ejemplo: Un usuario quiere ver la
+ *          sección de productos, el modelo se encargará de realizar esa 
+ *          consulta a la DB. Al crear un model se sugiere que la primera letra
+ *          del nombre del archivo sea en mayusculas.
+ *  ~ View: Es el encargado de lo que se ve en pantalla (HTML). Ejemplo: Sí el
+ *          Modelo hace la consulta a la DB para los productos, es la vista
+ *          quien imprime y renderiza esos resultados.
+ *  ~ Controller: Es el que se comunica entre el modelo y la vista, antes de
+ *          que el modelo consulte a la base de datos es el encargado de
+ *          mandarlo a llamar, y también una vez que el modelo tiene los
+ *          resultados de la consulta, es el que se encarga de pasarlos a la
+ *          vista.
+ *  ~ Router: Es un término que es importante tenerlo en conocimiento, es el
+ *          encargado de registrar todas las URL's o endpoints que la
+ *          aplicación soporta. Sí el usuario accede a /productos, el router
+ *          llama a un controlador, que se comunica con el modelo para
+ *          obtener los datos que son pasados hacia la vista para ser
+ *          mostrados
+ * 
+ * Para iniciar con la creacipon de un Modelo, creamos una carpeta "models"
+ * en la raíz del proyecto, y dentro de la carpeta creamos el archivo
+ * "Viaje.js"
  */
