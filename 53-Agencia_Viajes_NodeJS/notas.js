@@ -331,4 +331,24 @@
  * (No dejar espacios entre el #, las llaves y variable)
  * 
  * 
+ * ########## Conectando a una base de datos MYSQL ##########
+ * 
+ * Debemos tener instalado MYSQL y TablePlus con anterioridad, importamos la 
+ * base de datos al tableplus haciendo uso del SQL dump, luego procedemos a
+ * instalar una dependencia de desarrollo con el siguiente comando (recordar 
+ * que la ruta debe estar posicionada en la raiz del proyecto):
+ * 
+ * npm install mysql2 sequelize
+ * Sequelize es un ORM que permite a los usuarios llamar a funciones JS para
+ * interactuar con SQLDB sin escribir consultas reales.
+ * 
+ * Definición: Un ORM (Object Relational Mapping) tiene como función abstraer
+ * la DB, de modo que tú como programador puedas hacer consultas sin conocer
+ * SQL, y en su lugar, seguir usando el lenguaje de programación que ya
+ * conoces. Lo que hace un ORM es mapear las bases de datos a objetos(de ahí
+ * viene su nombre), y estos objetos tendrán métodos para interactuar con ellos
+ * y hacer el CRUD sin comunicarte directamente a la base de datos.
+ * 
+ * Procedemos a crear una carpeta llamada "config" en la raíz y dentro de
+ * esta carpeta creamos un archivo llamado "db.js"
  */

@@ -7,6 +7,14 @@ import express from 'express'; // Inportamos con Modules
 // Importamos los routes con las URLs, este routing se añadirá al app
 import router from './routes/index.js';
 
+// Importamos el archivo de configuración de la DB
+import db from './config/db.js';
+
+// Conectar la base de datos
+db.authenticate()
+    .then( () => console.log('Base de datos conectada'))
+    .catch( error => console.log(error));
+
 // Almacenamos la función de ejecución de express
 const app = express();
 
