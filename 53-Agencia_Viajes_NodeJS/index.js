@@ -36,8 +36,9 @@ app.use( (req, res, next) => {
     next();
 });
 
-// Definir la carpeta pública
+// Definir la carpeta pública para ruta principal y rutas hijas de "/viajes"
 app.use(express.static('public'));
+app.use('/viajes', express.static('public'));
 
 // Agregar router
 //.use soporta GET, POST, PUT, PATCH, DELETE, y lo que hará la siguiente

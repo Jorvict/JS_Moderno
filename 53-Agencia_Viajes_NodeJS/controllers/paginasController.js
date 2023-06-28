@@ -46,10 +46,29 @@ const paginaTestimoniales = (req, res) =>{
     });
 }
 
+// Muestra un viaje por su slug
+const paginaDetalleViaje = async (req, res) =>{
+
+    const { slug } = req.params;
+
+    try {
+        
+        const viaje = await Viaje.findOne({ where : {slug} });
+        res.render('viaje', { // Archivo .pug de view que renderizará
+            pagina: 'Información Viaje',
+            viaje
+        })
+
+    } catch (error) {
+        console.log(error)
+    }
+}
+
 // Exportamos funciones de renderización para que sean usadas por el router
 export {
     paginaInicio,
     paginaNosotros,
     paginaViajes,
-    paginaTestimoniales
+    paginaTestimoniales,
+    paginaDetalleViaje
 }

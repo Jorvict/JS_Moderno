@@ -418,4 +418,47 @@
  * van antes de la asignación de la variable al elemento a renderizar
  * 
  * 
+ * ########## Consultar la DB de cada viaje según la URL visitada ##########
+ * Debemos crear un router que nos pueda direccionar a cada uno de los
+ * distintos viajes a través del slug, para ello podemos hacer uso de un
+ * comodín en el router, escribiendo la ruta de la siguiente manera:
+ *      /viajes/:(nombre_comodin)
+ * El comodín puede llevar cualquier nombre, pero se recomienda que sea
+ * igual al nombre de la columna del slug, la función del comodín es que
+ * en vez de crear un router para la página n1,n2,n3...etc. lo que hará es 
+ * ejecutar el método de renderización pasandole el comodín como una
+ * variable que se podrá utilizar desde el método ejecutado.
+ * En otras palabras, se puede interpretar como que todas las rutas que inicien
+ * con "/viajes/" ejecutarán el método contiguo al comodín.
+ * Adicionalmente tener en cuenta que el comodín capturará toda la ruta que
+ * venga despues de "/viajes/", es decir, sí la ruta del slug fuera
+ * "/viajes/terrestres/bus/mes-mayo", entonces el valor almacenado en el
+ * comodín será la ruta "terrestres/bus/mes-mayo"
+ * 
+ * NOTA: Tener en consideración que el view con los detalles se ejecuta 
+ * automaticamente luego de hacer click al hipervinculo porque el router
+ * está detectando que se está accediendo a una ruta del comodín.
+ * 
+ * Para acceder a la variable que capturó la ruta del comodin debemos acceder
+ * a req.params desde el controlador que abrirá las páginas, sí lo imprimimos
+ * desde un console.log veremos que retornará un objeto donde el nombre de la 
+ * variable que capturaró la ruta es el mismo nombre que se estableció para 
+ * el comodín, por lo cual para acceder a la ruta podemos acceder con sintáxis
+ * de punto
+ * 
+ * Sí en las rutas "hijas" no funciona el logo del header, ir al .pug del
+ * header y en la ruta de la img del logo agregarle un "/" al inicio sí es
+ * que no lo tiene, el inconveniente con la imagen puede ser debido a un
+ * problema de que no está buscando la imagen en la ruta del public 
+ * correctamente sino que desde rutas secundarias o hijas al no tener el
+ * / está intentando buscar el archivo en la propia ruta del .pug.
+ * Adicionalmente, en el index.js principal, donde se definió la ruta de
+ * la carpeta public, agregamos el siguiente codigo
+ * app.use('/viajes', express.static('public'));
+ * Esto es para que las rutas hijas de viajes también tengan acceso a la
+ * carpeta public, ya que el app.use inicial solo funciona para rutas de
+ * primer nivel, pero tener en cuenta que se debe modificar la ruta del
+ * botón de "Más información" y eliminar el prefijo "viajes/"
+ * 
+ *  
  */
