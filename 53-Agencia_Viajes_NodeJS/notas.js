@@ -394,5 +394,28 @@
  * dentro creamos un archivo que se llama "paginasController.js", este
  * controlador se encargará de mostrar las diferentes páginas del proyecto.
  * 
+ * ########## Consultar a la base de datos ##########
+ * Desde el paginasController importamos el Modelo de viaje, dentro
+ * de la funcion de renderizacion de viajes creamos una variable que tendra
+ * como valor un await que esperará la ejecución del modelo Viaje, con el
+ * método findAll(), es decir, una línea de código similar a la siguiente:
+ * 
+ * La variable creada será un arreglo con los valores retornados por la
+ * consulta, nos aseguramos de pasar dicho arreglo a través del controller
+ * para poder utilizarlo en el view.
+ * 
+ * Para poder recorrer el arreglo en el pug se puede utilizar una estructura
+ * repetitiva similar a un for, la cual es un "each", por ejemplo:
+ * each viaje in viajes
+ * Donde viaje es la posición iterada y viajes es el arreglo
+ * 
+ * Para el caso del hipervinculo de mas información recordar que la ruta del
+ * href debe iniciar con la ruta "viajes/(data_iteracion)" y agregar un texto
+ * fuera de los parentesis de atributos, ese texto sera renderizado como
+ * visible. Ejemplo de como sería: 
+ *      a(href=`viajes/${viaje.slug}`, class="btn btn-success btn-block") Mas información
+ * Recordar que debe estar alineado con los parrafos previos, y los atributos
+ * van antes de la asignación de la variable al elemento a renderizar
+ * 
  * 
  */

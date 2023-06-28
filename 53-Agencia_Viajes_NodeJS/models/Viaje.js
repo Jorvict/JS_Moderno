@@ -1,5 +1,5 @@
 import Sequelize from "sequelize";
-import db from "../config/db";
+import db from "../config/db.js";
 
 /* 
     Definimos nuestro primer modelo, como primer argumento pasamos el nombre 

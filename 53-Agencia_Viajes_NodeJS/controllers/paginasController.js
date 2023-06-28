@@ -1,3 +1,7 @@
+// Importamos el model de Viaje para poder realizar consulta a DB
+import { Viaje } from '../models/Viaje.js';
+
+// Establecemos las funciones para renderizar las páginas que serán enrutadas
 const paginaInicio = (req, res) => {
 
     res.render('inicio', {
@@ -22,15 +26,17 @@ const paginaNosotros = (req, res) => {
     });
 }
 
-const paginaViajes = (req, res) =>{
+const paginaViajes = async (req, res) =>{
+
+    // Consultar a la DB los viajes
+    const viajes = await Viaje.findAll();
+
+    console.log(viajes)
 
 
-
-
-    
     res.render('viajes', {
-        pagina: 'Viajes',
-        // viajes // Es igual a viajes:viajes
+        pagina: 'Próximos viajes',
+        viajes // Es igual a viajes:viajes
     });
 }
 
@@ -40,7 +46,7 @@ const paginaTestimoniales = (req, res) =>{
     });
 }
 
-
+// Exportamos funciones de renderización para que sean usadas por el router
 export {
     paginaInicio,
     paginaNosotros,
