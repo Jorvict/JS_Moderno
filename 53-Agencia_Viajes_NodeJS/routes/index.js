@@ -1,6 +1,9 @@
 // Importamos express
 import express from 'express';
 
+// Importamos los controllers
+import { paginaInicio, paginaNosotros, paginaViajes, paginaTestimoniales } from '../controllers/paginasController.js';
+
 // Definimos el router
 const router = express.Router();
 
@@ -20,43 +23,12 @@ const router = express.Router();
  * 
  * RECORDAR QUE GET ES CUANDO VISITAS UNA URL
  */
-router.get('/', (req, res) => {
+router.get('/', paginaInicio);
 
+router.get('/nosotros', paginaNosotros);
 
+router.get('/viajes', paginaViajes);
 
-    res.render('inicio', {
-        pagina: 'Inicio'
-    }); // Express envia un texto al usuario del site
-
-    /* res.json({
-        id: 1 Express envía un JSON al usuario del site
-    }); */
-
-    // res.render(); // Se utiliza para mostrar una vista
-});
-
-router.get('/nosotros', (req, res) => {
-
-    const viajes = 'Cambiando el texto';
-
-    // El .pug renderizado, dentro del objeto consecutivo van todos los
-    //datos que requerimos enviar a dicha vista
-    res.render('nosotros', {
-        viajes, // Es igual a viajes:viajes
-        pagina: 'Nosotros'
-    });
-});
-
-router.get('/viajes', (req, res) =>{
-    res.render('viajes', {
-        pagina: 'Viajes'
-    });
-});
-
-router.get('/testimoniales', (req, res) =>{
-    res.render('testimoniales', {
-        pagina: 'Testimoniales'
-    });
-});
+router.get('/testimoniales', paginaTestimoniales);
 
 export default router;

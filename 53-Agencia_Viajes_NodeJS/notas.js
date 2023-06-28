@@ -383,7 +383,16 @@
  *          obtener los datos que son pasados hacia la vista para ser
  *          mostrados
  * 
- * Para iniciar con la creacipon de un Modelo, creamos una carpeta "models"
+ * Para iniciar con la creación de un Modelo, creamos una carpeta "models"
  * en la raíz del proyecto, y dentro de la carpeta creamos el archivo
  * "Viaje.js"
+ * 
+ * ########## Creando un Controller ##########
+ * Recordar que el controlador es quien se debe de encargar de que información
+ * se va a mostrar y que vista se va a cargar. Para ello debemos crear una
+ * carpeta en la raíz del proyecto, debe tener por nombre "controllers" y
+ * dentro creamos un archivo que se llama "paginasController.js", este
+ * controlador se encargará de mostrar las diferentes páginas del proyecto.
+ * 
+ * 
  */
