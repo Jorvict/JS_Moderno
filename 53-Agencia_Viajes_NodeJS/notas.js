@@ -109,9 +109,12 @@
  *  - Instalamos Nodemon como dependencia de desarrollo, Nodemon funciona
  *      para detectar cambios en los archivos y reiniciar el servidor,
  *      esto es útil para refrescar el site cada vez que modificamos el
- *      código mientras ejecutamos el servidork, así ya no tendremos que
+ *      código mientras ejecutamos el servidor, así ya no tendremos que
  *      ir a la terminal, detener el servidor y volverlo a arrancar cada
- *      vez que hagamos algún cambio.
+ *      vez que hagamos algún cambio (tener en cuenta que refrescar el
+ *      servidor con los nuevos cambios no significa que la página se
+ *      actualizará automaticamente, por el contrario, debemos refrescar
+ *      la página manual,ente, lo que se refresca es el server).
  * - Generamos el archivo index.js que es donde vamos a configurar express
  * - Para ejecutar el index.js y poder arrancar el servidor necesitamos el
  *      package.json, es nuestra segunda utilidad de dicho archivo, para
@@ -194,7 +197,8 @@
  * usuario está autenticado o no), los datos que se pasarán a la vista van
  * dentro de un objeto que se pasa como argumento al response.render en 
  * conjunto con el nombre de la vista a la cual se está accediendo, para
- * más detalle revisar funciones router.get del archivo de routing.
+ * más detalle revisar funciones router.get del archivo de routing y los
+ * controllers de las páginas.
  * 
  * Para utilizar alguna de las variables que se pasaron como argumento,
  * simplemente desde el archivo pug colocamos la etiqueta y un = asignandole
@@ -299,7 +303,10 @@
  *      a "next()". Este tipo de middleware suele ser utilizado para manejar
  *      rutas especificas y enviar una respuesta al cliente. Una vez que se
  *      envía la respuesta, la ejecución se considera complet y no hay necesidad
- *      de continuar hacia otros middlewares.
+ *      de continuar hacia otros middlewares. Suelen ser utilizadas para rutas
+ *      no encontradas, pero tambien son validas para realizar redirecciones
+ *      en caso se intente acceder a una ruta que no existe o a una ruta que
+ *      se necesita logearse previamente.
  * 
  * 
  * Express maneja un objeto de variables internas llamada "locals", puedes
@@ -325,7 +332,7 @@
  * plantillas, además, en el index.pug (la master page) se puede hacer uso
  * de esa misma variable para el Title, de ésta manera la masterpage cambiará
  * de título de página según la variable que reciba en el routing de la
- * página a la que estamos accediendo, esto podría beneficiar al CEO. En caso
+ * página a la que estamos accediendo, esto podría beneficiar al SEO. En caso
  * deseemos utilizar dos variables debemos utilizar la sintáxis "#{variable}"
  * Por ejemplo: title #{nombreSitio} | #{pagina}
  * (No dejar espacios entre el #, las llaves y variable)
@@ -399,6 +406,7 @@
  * de la funcion de renderizacion de viajes creamos una variable que tendra
  * como valor un await que esperará la ejecución del modelo Viaje, con el
  * método findAll(), es decir, una línea de código similar a la siguiente:
+ *  const viajes = await Viaje.findAll();
  * 
  * La variable creada será un arreglo con los valores retornados por la
  * consulta, nos aseguramos de pasar dicho arreglo a través del controller
@@ -442,7 +450,7 @@
  * Para acceder a la variable que capturó la ruta del comodin debemos acceder
  * a req.params desde el controlador que abrirá las páginas, sí lo imprimimos
  * desde un console.log veremos que retornará un objeto donde el nombre de la 
- * variable que capturaró la ruta es el mismo nombre que se estableció para 
+ * variable que capturó la ruta es el mismo nombre que se estableció para 
  * el comodín, por lo cual para acceder a la ruta podemos acceder con sintáxis
  * de punto
  * 

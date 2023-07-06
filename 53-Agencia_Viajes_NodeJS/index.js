@@ -37,6 +37,7 @@ app.use( (req, res, next) => {
 });
 
 // Definir la carpeta pública para ruta principal y rutas hijas de "/viajes"
+// Esto se conoce como servicios de archivos estáticos
 app.use(express.static('public'));
 app.use('/viajes', express.static('public'));
 
