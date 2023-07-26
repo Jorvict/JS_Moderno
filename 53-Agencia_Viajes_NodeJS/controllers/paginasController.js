@@ -5,7 +5,8 @@ import { Viaje } from '../models/Viaje.js';
 const paginaInicio = (req, res) => {
 
     res.render('inicio', {
-        pagina: 'Inicio'
+        pagina: 'Inicio',
+        clase: 'home'
     });
 
     /* res.json({
