@@ -2,12 +2,22 @@
 import { Viaje } from '../models/Viaje.js';
 
 // Establecemos las funciones para renderizar las páginas que serán enrutadas
-const paginaInicio = (req, res) => {
+const paginaInicio = async (req, res) => {
 
-    res.render('inicio', {
-        pagina: 'Inicio',
-        clase: 'home'
-    });
+    // Consultar 3 viajes del modelo Viaje
+    try {
+        const viajes = await Viaje.findAll({ limit: 3 });
+
+        res.render('inicio', {
+            pagina: 'Inicio',
+            clase: 'home',
+            viajes
+        });
+    } catch (error) {
+        console.log(error);
+    }
+
+    
 
     /* res.json({
         id: 1 Express envía un JSON al usuario del site
