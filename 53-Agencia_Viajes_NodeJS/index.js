@@ -36,6 +36,10 @@ app.use( (req, res, next) => {
     next();
 });
 
+// Agregar body parser para leer los datos del formulario
+app.use(express.urlencoded({extended: true}));
+
+
 // Definir la carpeta pública para ruta principal y rutas hijas de "/viajes"
 // Esto se conoce como servicios de archivos estáticos
 app.use(express.static('public'));
