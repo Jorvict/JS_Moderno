@@ -1,5 +1,6 @@
 // Importamos el model de Viaje para poder realizar consulta a DB
 import { Viaje } from '../models/Viaje.js';
+import { Testimonial } from '../models/Testimoniales.js';
 
 // Establecemos las funciones para renderizar las páginas que serán enrutadas
 const paginaInicio = async (req, res) => {
@@ -51,10 +52,20 @@ const paginaViajes = async (req, res) =>{
     });
 }
 
-const paginaTestimoniales = (req, res) =>{
-    res.render('testimoniales', {
-        pagina: 'Testimoniales'
-    });
+const paginaTestimoniales = async (req, res) =>{
+
+    try {
+        
+        const testimoniales = await Testimonial.findAll();
+
+        res.render('testimoniales', {
+            pagina: 'Testimoniales',
+            testimoniales
+        });
+    } catch (error) {
+        console.log(error)
+    }
+    
 }
 
 // Muestra un viaje por su slug
