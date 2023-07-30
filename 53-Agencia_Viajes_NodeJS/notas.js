@@ -468,5 +468,14 @@
  * primer nivel, pero tener en cuenta que se debe modificar la ruta del
  * botón de "Más información" y eliminar el prefijo "viajes/"
  * 
- *  
+ * 
+ * ########## Reutilizando el código de viajes ##########
+ * 
+ * Un inconveniente que podríamos presentar es que las rutas se dupliquen
+ * al ingresar a un viaje desde la página viajes, esto pasará sí el
+ * hipervinculo de mas información direcciona con un hípervinculo
+ * relativo y no absoluto, los hípervinculos relativos añaden el valor
+ * del href a la ruta actual en la que nos encontramos mientras que una
+ * ruta absoluta comienza desde la raíz del dominio, para asegurarnos
+ * que el href está con una ruta absoluta debemos colocarle un / al inicio
  */
